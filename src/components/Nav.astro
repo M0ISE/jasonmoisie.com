@@ -7,7 +7,12 @@ const isAbout = pathname.startsWith("/about");
 
 <nav aria-label="Primary">
   <ul>
-    <li><a href="/" aria-current={isHome ? "page" : undefined}>Home 🏠</a></li>
+    <li>
+      <a class="home" href="/" aria-current={isHome ? "page" : undefined}>
+        <span class="glyph" aria-hidden="true"></span>
+        <span class="sr-only">Home</span>
+      </a>
+    </li>
     <li><a href="/work" aria-current={isWork ? "page" : undefined}>The Work ✨</a></li>
     <li><a href="/about" aria-current={isAbout ? "page" : undefined}>About Me ☕</a></li>
   </ul>
@@ -18,6 +23,7 @@ const isAbout = pathname.startsWith("/about");
 
   ul {
     display: flex;
+    align-items: baseline;
     gap: clamp(1rem, 3vw, 2.4rem);
     list-style: none;
     margin: 0;
@@ -36,4 +42,22 @@ const isAbout = pathname.startsWith("/about");
   a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; }
 
   a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
+
+  /* The mark: an empty square that fills in when you reach for it. */
+  .home {
+    font-size: var(--step-2);
+    line-height: 1;
+    text-decoration: none;
+  }
+  .home:hover,
+  .home:focus-visible,
+  .home[aria-current="page"] { text-decoration: none; }
+
+  .glyph::before { content: "□"; }
+
+  .home:hover .glyph::before,
+  .home:focus-visible .glyph::before { content: "▧"; }
+
+  /* on the homepage itself the mark is already "here" */
+  .home[aria-current="page"] .glyph::before { content: "▧"; }
 </style>
