@@ -37,6 +37,13 @@ Each home was completely customisable. As small or as large as needed; thousands
 
 ## 'heavens'
 
+<figure>
+<div class="dither" role="img" aria-label="A home with no walls and a roof, standing on the surface of the Moon, with neo-classical columns along the edge of the living platform"
+     style="--img: url(/images/dither/heavens.png); aspect-ratio: 1100 / 619;"></div>
+<figcaption>'heavens' — built in Microsoft Maquette. A home with no walls, on the Moon.</figcaption>
+</figure>
+
+
 The one significant limitation was environmental. The custodians had spent years working to quell any sense of nationalism attached to each state's natural environment, and there were real worries that letting these homes sit inside a particular city or country would undo that.
 
 So they went up.

@@ -19,6 +19,13 @@ The question the project is actually asking is which of those accidents are nois
 
 ## What runs in parallel
 
+<figure>
+<div class="dither" role="img" aria-label="Ceramic pots from the project, thrown and glazed, arranged together"
+     style="--img: url(/images/dither/major-project.png); aspect-ratio: 1100 / 967;"></div>
+<figcaption>The pots, before they were scanned and taken apart.</figcaption>
+</figure>
+
+
 Running in parallel across the project:
 
 - **Wheel throwing** — practice pots, large pots, turning, and recycling the unfired scraps back into usable clay.

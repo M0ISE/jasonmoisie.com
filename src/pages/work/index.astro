@@ -13,10 +13,11 @@ const all = (await getCollection("work", ({ data }) => !data.draft)).sort(
 // group by year, newest first — the archive reads as a timeline
 const years = [...new Set(all.map(shelf))].sort((a, b) => b - a);
 const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.map(shelf))}`;
+const countFor = (y: number) => all.filter((p) => shelf(p) === y).length;
 ---
 
 <Base
-  title="Work — Jason Moisiadis"
+  title="The Work — Jason Moisiadis"
   description={`An archive of essays, projects and experiments, ${span}.`}
 >
   <section class="wrap">
@@ -25,34 +26,55 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
       <p class="label">{all.length} pieces · {span}</p>
     </header>
 
-    {
-      years.map((year) => (
-        <section class="year-block">
-          <h2 class="year label">{year}</h2>
-          <ul>
-            {all
-              .filter((p) => shelf(p) === year)
-              .map((p) => (
-                <li>
-                  <a href={`/work/${p.id}`}>
-                    <span
-                      class="dot"
-                      style={`--dot: var(--flood-${p.data.flood})`}
-                      aria-hidden="true"
-                    />
-                    <span class="t">{p.data.title}</span>
-                    <span class="s">{p.data.summary}</span>
-                    <span class="m">
-                      {p.data.type} · {p.data.source}
-                      {p.data.pdf ? " · PDF" : ""}
-                    </span>
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </section>
-      ))
-    }
+    <div class="archive">
+      <!-- Scrub the years. Sticky, anchor-linked, no JavaScript. -->
+      <nav class="rail" aria-label="Jump to year">
+        <ol>
+          {
+            years.map((year) => (
+              <li>
+                <a href={`#y${year}`}>
+                  <span class="r-tick" aria-hidden="true" />
+                  <span class="r-year">{year}</span>
+                  <span class="r-count">{countFor(year)}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+
+      <div class="list">
+        {
+          years.map((year) => (
+            <section class="year-block" id={`y${year}`}>
+              <h2 class="year label">{year}</h2>
+              <ul>
+                {all
+                  .filter((p) => shelf(p) === year)
+                  .map((p) => (
+                    <li>
+                      <a href={`/work/${p.id}`}>
+                        <span
+                          class="dot"
+                          style={`--dot: var(--flood-${p.data.flood})`}
+                          aria-hidden="true"
+                        />
+                        <span class="t">{p.data.title}</span>
+                        <span class="s">{p.data.summary}</span>
+                        <span class="m">
+                          {p.data.type} · {p.data.source}
+                          {p.data.pdf ? " · PDF" : ""}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+    </div>
   </section>
 </Base>
 
@@ -73,7 +95,71 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
     letter-spacing: -.03em;
   }
 
-  .year-block { margin-block-start: clamp(2.2rem, 6vh, 3.4rem); }
+  .archive { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 820px) {
+    .archive {
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
+    }
+  }
+
+  /* --- the scrubber --- */
+  .rail { display: none; }
+
+  @media (min-width: 820px) {
+    .rail {
+      display: block;
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+      padding-block-start: clamp(2.2rem, 6vh, 3.4rem);
+    }
+  }
+
+  .rail ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-inline-start: 1px solid var(--rule);
+  }
+
+  .rail a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem 0 .55rem .7rem;
+    margin-inline-start: -1px;
+    border-inline-start: 3px solid transparent;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .1em;
+    color: var(--fg-soft);
+    transition: color .2s ease, border-color .2s ease;
+  }
+
+  .rail a:hover,
+  .rail a:focus-visible {
+    color: var(--fg);
+    border-inline-start-color: var(--fg);
+  }
+
+  .r-tick {
+    width: 7px;
+    height: 7px;
+    background: currentColor;
+  }
+
+  .r-count {
+    font-variant-numeric: tabular-nums;
+    opacity: .6;
+  }
+
+  /* the year you jumped to stays marked */
+  .year-block:target > .year { color: var(--fg); }
+
+  .year-block { margin-block-start: clamp(2.2rem, 6vh, 3.4rem); scroll-margin-top: 1.5rem; }
 
   .year {
     font-family: var(--font-pixel);
@@ -108,6 +194,7 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
     margin-block-start: .42em;
     background: var(--dot);
     border: 1.5px solid var(--fg);
+    transition: transform .2s ease;
   }
 
   .t {
@@ -138,5 +225,4 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
 
   li a:hover .t { text-decoration: underline; text-decoration-thickness: 2px; }
   li a:hover .dot { transform: scale(1.35); }
-  .dot { transition: transform .2s ease; }
 </style>

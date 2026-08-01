@@ -27,6 +27,13 @@ In essence, there are no menial tasks left for people to do. The division betwee
 
 ## The home wakes up when he arrives
 
+<figure>
+<div class="dither" role="img" aria-label="A still from the film Her showing Theodore's apartment, warmly lit, spare and unorganised"
+     style="--img: url(/images/dither/her.png); aspect-ratio: 1100 / 577;"></div>
+<figcaption>Theodore's apartment. Nostalgic, comfortable, and not remotely futuristic.</figcaption>
+</figure>
+
+
 We're introduced to Theodore's home as it *awakens* on his arrival — slowly turning on the lights, welcoming him into the space. That gentle, welcoming embrace is what establishes the warmth of this future. The warm red feature lighting works to the same end.
 
 We also notice the home doesn't look too dissimilar to homes you'd find today. There are no mirrored stainless walls or boxy lighting panels. The production design is a nostalgic, comfortable, modern family home — which happens to be an apartment in a Los Angeles somewhere between 2025 and 2050.

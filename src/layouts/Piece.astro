@@ -146,6 +146,16 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
   }
   .body :global(figure.stack figcaption) { order: 99; }
 
+  /* Dithered imagery. The PNG is a 1-bit alpha mask, painted with the page's
+     own foreground — so it reads as ink on paper, and as paper on a flood
+     ground, from one file. */
+  .body :global(.dither) {
+    width: 100%;
+    background-color: currentColor;
+    -webkit-mask: var(--img) center / contain no-repeat;
+    mask: var(--img) center / contain no-repeat;
+  }
+
   .body :global(.gallery) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
