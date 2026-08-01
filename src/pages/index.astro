@@ -14,16 +14,21 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${new Date().getFull
   description="An archive of work, essays and experiments by Jason Moisiadis. Immersive experience designer, Sydney."
 >
   <section class="wrap hero">
+    <p class="label byline">Jason Moisiadis · they/he · Sydney</p>
+
     <h1 class="pixel">Turning messy&nbsp;problems into calm,&nbsp;working systems</h1>
 
     <p class="intro">
-      👋 I'm Jason (they/he). Right now that's at Lush in Sydney — training,
-      troubleshooting, and building things that hold up on a shop floor. Before
-      that, a Masters in Visualisation, Simulation &amp; Immersive Design at UNSW.
+      Right now that's Tech Services at Lush — training, troubleshooting, and
+      building the tooling that keeps a shop floor running when something
+      breaks. I got here through immersive and user-centred design, and it's
+      less of a swerve than it sounds: working out what people actually need
+      before you build them something is the same discipline whether the thing
+      is an immersive experience or a stock system.
     </p>
 
     <p class="intro">
-      This is the archive: essays, experiments and things I've made.
+      This is the archive — essays, experiments and things I've made.
     </p>
   </section>
 
@@ -53,6 +58,8 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${new Date().getFull
 
 <style>
   .hero { padding-block-end: clamp(3rem, 12vh, 7rem); }
+
+  .byline { margin-block-end: 1.4rem; }
 
   h1 {
     font-size: var(--step-4);
