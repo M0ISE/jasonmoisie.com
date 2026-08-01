@@ -75,7 +75,24 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
   }
   .pdf a:hover { background: var(--fg); color: var(--ground); }
 
-  .body { max-width: var(--measure); font-size: var(--step-1); }
+  /* Text is held to the reading measure; figures are allowed to run wider,
+     so graphs stay legible without stretching the prose. */
+  .body { font-size: var(--step-1); }
+
+  .body :global(> p),
+  .body :global(> ul),
+  .body :global(> ol),
+  .body :global(> h2),
+  .body :global(> h3),
+  .body :global(> blockquote),
+  .body :global(> hr) {
+    max-width: var(--measure);
+  }
+
+  .body :global(> figure),
+  .body :global(> .gallery) {
+    max-width: min(100%, 1000px);
+  }
 
   .body :global(h2) {
     font-size: var(--step-2);
@@ -102,6 +119,56 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
 
   .body :global(a) { text-decoration-color: var(--fg-soft); }
   .body :global(a:hover) { text-decoration-color: currentColor; }
+
+  /* --- figures, galleries --- */
+  .body :global(figure) { margin: 2.6rem 0; }
+
+  .body :global(figure img) {
+    width: 100%;
+    border: 1.5px solid var(--rule);
+    background: var(--ground-2);
+  }
+
+  /* multiple views of the same result, stacked */
+  .body :global(figure.stack) {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .body :global(figcaption) {
+    margin-block-start: .7rem;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .06em;
+    color: var(--fg-soft);
+    text-wrap: pretty;
+  }
+  .body :global(figure.stack figcaption) { order: 99; }
+
+  .body :global(.gallery) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+    margin: 2.6rem 0 .8rem;
+  }
+  @media (min-width: 560px) {
+    .body :global(.gallery) { grid-template-columns: repeat(5, 1fr); }
+  }
+  /* no object-fit crop — these are someone else's artworks, shown whole */
+  .body :global(.gallery img) {
+    width: 100%;
+    height: auto;
+    border: 1.5px solid var(--rule);
+    background: var(--ground-2);
+  }
+
+  /* the attribution line that follows a gallery */
+  .body :global(.gallery + p) {
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+    max-width: var(--measure);
+  }
 
   .back {
     margin-block-start: clamp(3rem, 8vh, 5rem);

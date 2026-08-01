@@ -8,15 +8,131 @@ source: UNSW
 flood: purple
 pdf: superposition.pdf
 featured: true
-pdfOnly: true
 ---
 
-This essay works through Lindy Lee's series *true ch'ien*, and uses it to think about choices and consequences: how we're connected to and defined by the choices we make, as much as by the choices we didn't.
+I wrote this about Lindy Lee's 2018 series *true ch'ien*, and used it to think about choices and consequences — how we're connected to and defined by the choices we make, as much as by the choices we didn't.
 
-It opens by asking who wrote it — and who *didn't* write it. In sitting down, the author chose to write and not to write; to do the dishes and not do the dishes; to watch a press conference and to ignore it. All of those people exist. Only one of them produced this. That doesn't make the others invalid.
+It's a weird piece of writing and I still really like it. About ten minutes if you're up for it.
 
-Making a work is a task on a timescale that's finite and infinite at once. At any point it could be read as complete. If the writer dies mid-sentence, the essay has found an ending.
+---
 
-It's a weird and fun piece of writing and I still really like it.
+Who is the person that wrote this piece? Who is the person that didn't write this piece?
 
-The full text is currently the PDF below, and is being brought into the site properly.
+How do these people relate to each other?
+
+In writing this piece, the author chooses from a set of actions:
+
+- To sit and write this work.
+- To sit and not write this.
+- To wash dishes instead of this.
+- To wash dishes to work on this.
+- To finish this piece.
+- To never finish this piece.
+- To watch an NSW Health Press conference and write this piece while not washing the dishes.
+- To not watch an NSW Health Press conference and not write this piece while not washing the dishes.
+
+In creating this work, they made the choice to both write and not write. In doing so, they have made a piece of writing. Does that make the choice of not writing the work invalid?
+
+No.
+
+The act of creating a work is a task that possesses a time scale that at once is both finite and infinite. At any point, the work could be read as complete — if I die after writing these words, then surely the essay is complete and has found an ending. If more words followed the ones that came before these, then that ending hasn't come to pass. However, the possibility of that ending still has added to the whole of the work. In some way, can we say that the particular ending didn't happen when it still affected the whole?
+
+In the same way, I could write this essay till the end of time. Redecorating and rephrasing until the sun has gone dark and my protons decay. It's a cliché to say that 'art or writing is never finished, only abandoned', yet it is true in some tangible way. There are two versions of myself working on this piece. One that will never finish it and another who abandoned the task after each word is complete.
+
+Yet, in a very real sense, these words will cease to flow, solidifying into a piece that I will not work on again. I will have written my last sentence, edited my last choice of verb, questioned the concept and form, then released this piece to be read by my lecturer or the public at large. In doing so, haven't I chosen to 'abandon' the work?
+
+No.
+
+Yet, through being a conscious entity of actions and ideas, these words, these thoughts that are embodied through words, will be reformed again and again in ways — different, interactions of being and not being as I move and iterate with time. In doing that, I have chosen to neither 'abandon' the work nor write into eternity. To create is to be in a superposition of creating and not creating, forming constructs as you go, not finished, not stillborn, but a moment of necessary collapse,
+
+Enacting:
+a particle that is…
+or,
+a wave of…
+
+Neither one performing their dichotomy for more than a moment until the necessary superposition resumes. The action of enacting, becoming, thinking means that the work itself never finishes while also being 'abandoned'. It is only in the act of the head turning back which forces the space between these objects to shrink away, to be one or the other, staccato iterations that are separated by:
+
+thought process,
+or
+work environment,
+or
+beloved partner,
+or
+object / person made.
+
+Each is seen as a stopping point from which the next epoch is made, or moves against. Yet, in actuality, there is an infinite number of choices or divisions between each object. Each one real. A turning over of being and not being that shifts away and towards each object; this is the shape of that necessary superposition. Which forms and takes form. That is and isn't and is again.
+
+---
+
+<div class="gallery" role="group" aria-label="Ten tableaus from Lindy Lee's true ch'ien, 2018">
+<img src="/images/chen/chen1.png" alt="Tableau one from Lindy Lee's true ch'ien — black ink on black paper" loading="lazy" />
+<img src="/images/chen/chen2.png" alt="Tableau two from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen3.png" alt="Tableau three from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen4.png" alt="Tableau four from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen5.png" alt="Tableau five from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen6.png" alt="Tableau six from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen7.png" alt="Tableau seven from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen8.png" alt="Tableau eight from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen9.png" alt="Tableau nine from Lindy Lee's true ch'ien" loading="lazy" />
+<img src="/images/chen/chen10.png" alt="Tableau ten, 'Saving the ghost', from Lindy Lee's true ch'ien" loading="lazy" />
+</div>
+
+*Lindy Lee,* true ch'ien, *2018. Ten tableaus, black ink on black paper. Reproduced here for the purpose of criticism and review.*
+
+In Lindy Lee's 2018 work *true ch'ien*, she illustrates the Zen kōan of that same name through a set of ten large tableaus. The story of the true ch'ien is one of a choice being made, of the necessary heartbreak of leaving family for the sake of love, coming apart in that action, and on reflecting with time, coming together again to see that in a meaningful way both paths were taken, yet neither can be held above the other (MCA 2017).
+
+In each tableau, we see a ghostly rendering of the kōan. The illustration visible most clearly in the catching of the light as you walk throughout the space. Black ink on black paper. A reading of the work taking time to decipher, the materiality of the work itself rejecting a cursory reading. On walking into the space, my first thought was that these were just a set of blank sheets of paper with burnt holes in them, a motif used by Lindy in her piece *End of Time (flowers fall)* (Bullock, p. 200).
+
+Yet, walking through the space, you gather glimpses of the narrative, not hidden but difficult to understand. The work brings you in and forces you to stand close and examine element by element, if you want to understand what is going on here. They are to be read up close and after, seen through the totality of their narrative. In doing so, Lee models the practice of the kōan: a story that rejects a cursory understanding, glimpses of meaning that can be found with close study, while also found through the exploration of it through your entire being. The object of this kōan is the question of who is the true ch'ien — with the stipulation that you cannot choose one above the other. The nature of the kōan requires you to take the question into your own life. *Who is the true ch'ien of my life?*
+
+Looking back at it now all I can see are:
+the things that I made,
+the people I spent time with,
+the ones I loved,
+the pain I felt.
+
+And yet, equally so,
+there things I didn't make,
+people I didn't know,
+ones that I didn't love,
+joy I felt.
+
+Alongside the choices that I made-and-remember are the ones I did-not-make-and-forgot. Yet, they are equally me. Knowing with time, as you come together again, you find the choices you didn't make; out of sight, they have grown and come back with a life of their own. One ch'ien was bedridden while the other was out in love; by the end they are back together again. The true ch'ien is neither and both.
+
+To be a person in our world is to accept pain and joy; to live entirely in one is a falsehood. To live in both is just to live. But that isn't the answer. In talking about Lee's work, the two ch'iens are often said to be representations of her want to honour tradition and the need to be her own artist, or between her Chinese heritage and her Australian home (Macgregor, p. 45). Often it is phrased as a need for one over the other; she is constrained by tradition and freed by her own practice. But I think that is a very western absolutist approach — that we must be one thing or another, to be or not to be, in an awful cliché. But that isn't true. It treats people as binary linear choices that we are or aren't. Somehow, life isn't like that; the choices we make affect our lives, but equally, the ghost of the actions we didn't take affect us. She doesn't need to be one or the other.
+
+The title of the last tableau is *Saving the ghost*. Who is the ghost that needs saving? Neither one is presented or titled as a ghost before this frame. In the work, we see the two ch'ien embracing each other. In other tellings of the story, the two become united together again as one being. Yet in the tableau and her retelling of the story, Lee omits that part of the kōan. In doing so, she removes the obvious reading — that the one at the end is the true ch'ien, the one that is the amalgamation of either; the Lee that can both honour tradition and be her own art.
+
+The ghost is the true ch'ien, the one who is neither and both. The spirit that has lived with her husband and made a family, and the one who lived in anguish without her love, and the one who experienced both, the one who experienced neither, the superposition of all options known and unknown. Or at least I think so; in reality, there isn't a true ch'ien, just like there isn't a true Jason or a true Lee.
+
+Yes, I wrote this piece, but in doing so, could I then say that I was the true Jason for doing so?
+
+No.
+
+There could be another Jason who didn't write this, who was in bed, in pain, half-dead as the world moved by and time passed. He who wrote knows that he who did not is necessary — that if there wasn't pain in inaction, then there wouldn't be a need for action. Likewise, he who did not write knows that there is one who did write, one that found pain in his pleasure of inactivity and moved against that. But isn't there also a he who wrote *and* didn't write? One that did and didn't enact the actions available.
+
+Through her exploration of the Zen kōan, Lee invites us into uncertainty, to know with certainty that both are true and false, and in saying so, one must be while the other cannot be. Yet neither will be. The work gives us a glimpse of the sublime that is etched lightly onto all artwork, that fractional element that brings it into the universal (Chan 2009). Which makes art art and makes life as life as life.
+
+In a recursive act, the kōan makes no sense, yet through the repetition of looking, seeing and not seeing, you find what isn't there. And through that act, you know what can't be and yet must be. A logical option that must and can't be. I must be the Jason that wrote this, but I also am the one who didn't. By doing so, the ghost of the superposition who did and didn't is true, yet physically they can't be. Art must be all that stands before you, yet it cannot be; there is a ghost that both is and isn't the art that is the true artwork and yet still cannot be.
+
+As I search for an ending, I know my pathway through this piece leads to one. Though, there is also an uncountable set of I's who wrote to one without an end. To live is to choose knowing that you are both the one who travels the pathway and the one who didn't; from your own perspective, you see only one ch'ien, and yet there are many more hidden in the walls.
+
+Maybe there is an I who isn't writing this now, who is sitting in Greece with my father, we're talking about nothing and everything. I know that for me right now, that is an impossibility in so many painfully different ways. Yet, I know that I could be experiencing that right now, mapping a way back — different paths taken, events being different, lives different. Through knowing that fact might just be true, well, that brings me a sense of sadness that it isn't me there. But going deeper, I find joy that we're there together in some way; neither one of us so far apart at one level, on another, the space is unimaginable.
+
+I see him who is I, knowing his eyes are soft and his heart is in the right place. Enjoy the joy you didn't know you should treasure. May your joy leak through the superposition of him that is us all while also being none.
+
+---
+
+## References
+
+Bullock, N. (2016). *MCA collection* (1st ed.).
+
+Chan, P. (2009, November). [What art is and where it belongs](https://www.e-flux.com/journal/10/61356/what-art-is-and-where-it-belongs/). *e-flux*.
+
+Macgregor, E. A. (2020). *Lindy Lee: Moon in a dew drop.*
+
+Museum of Contemporary Art Australia. (2017). [The paths we choose | Lindy Lee](https://www.mca.com.au/learn/learning-resources/lindy-lee/paths-we-choose/).
+
+Art Gallery of South Australia. (2018). [true ch'ien](https://www.agsa.sa.gov.au/collection-publications/collection/works/going-where-the-river-flows-5/64265/#work-series-tab).
+
+Art Gallery of South Australia. (2018, November). [true ch'ien | Saving the ghost #10](https://www.agsa.sa.gov.au/collection-publications/collection/works/saving-the-ghost-10/64269/).
