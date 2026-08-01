@@ -6,6 +6,30 @@ Built with [Astro](https://astro.build). Static, no client-side JavaScript, depl
 
 ---
 
+## Who this belongs to
+
+I'm Jason (they/he), an experience designer in Sydney.
+
+I turn messy problems into calm, working systems. Right now that's Tech Services
+at Lush across Australia and Aotearoa — training, troubleshooting, and building
+the tooling that keeps a shop floor running when something breaks.
+
+I got here through immersive and user-centred design: a Master of Visualisation,
+Simulation & Immersive Design at UNSW, and a Bachelor of Design Computing at the
+University of Sydney before that. It's less of a swerve than it sounds. Working
+out what people actually need before you build them something is the same
+discipline whether the thing is an immersive experience or a stock system.
+
+This repo is the site itself — an archive of essays, projects and experiments
+rather than a portfolio. Some of it is a decade of coursework; some of it is
+internal tooling written up at a safe altitude. It's meant to keep growing.
+
+- Site — [jasonmoisie.com](https://jasonmoisie.com)
+- LinkedIn — [jasonmoisiadis](https://www.linkedin.com/in/jasonmoisiadis/)
+- Photography — [@moisie.jpg](https://www.instagram.com/moisie.jpg/)
+
+---
+
 ## Running it
 
 ```bash
