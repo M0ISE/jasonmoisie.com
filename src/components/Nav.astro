@@ -1,50 +1,24 @@
 ---
 const { pathname } = Astro.url;
+const isHome = pathname === "/" || pathname === "";
 const isWork = pathname.startsWith("/work");
 const isAbout = pathname.startsWith("/about");
 ---
 
 <nav aria-label="Primary">
-  <a class="mark" href="/" aria-label="Jason Moisiadis — home">
-    <span class="glyph" aria-hidden="true"></span>
-  </a>
-
   <ul>
+    <li><a href="/" aria-current={isHome ? "page" : undefined}>Home 🏠</a></li>
     <li><a href="/work" aria-current={isWork ? "page" : undefined}>The Work ✨</a></li>
     <li><a href="/about" aria-current={isAbout ? "page" : undefined}>About Me ☕</a></li>
   </ul>
 </nav>
 
 <style>
-  nav {
-    display: flex;
-    align-items: center;
-    gap: clamp(1rem, 3vw, 2.4rem);
-    flex-wrap: wrap;
-    padding-block: 1.1rem 0;
-  }
-
-  .mark {
-    display: block;
-    line-height: 0;
-    flex: none;
-  }
-
-  /* Masked so the mark always takes --accent: purple on paper and dark
-     grounds, the flood's paired foreground on a flood page. One asset,
-     never clashes. */
-  .glyph {
-    display: block;
-    width: 34px;
-    aspect-ratio: 10576 / 7813;
-    background: var(--accent);
-    -webkit-mask: url("/brand/nav-purple.png") center / contain no-repeat;
-    mask: url("/brand/nav-purple.png") center / contain no-repeat;
-  }
+  nav { padding-block: 1.1rem 0; }
 
   ul {
     display: flex;
-    gap: clamp(.9rem, 2.5vw, 2rem);
+    gap: clamp(1rem, 3vw, 2.4rem);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -58,8 +32,8 @@ const isAbout = pathname.startsWith("/about");
     white-space: nowrap;
   }
 
-  ul a:hover,
-  ul a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; }
+  a:hover,
+  a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; }
 
-  ul a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
+  a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
 </style>
