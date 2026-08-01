@@ -22,7 +22,17 @@ The brief pushed towards a package of information and ideas surrounding a partic
 
 Two concepts came before the final one.
 
+<figure>
+<img src="/images/heavens/moon-mag.png" alt="Hand-drawn concept sketches in orange and white on black, showing a folding VR headset magazine — a flat packaged issue, the headset folding open, and a person wearing it" loading="lazy" />
+<figcaption>Moon Mag. Each issue arrives as the headset it plays on.</figcaption>
+</figure>
+
 **Moon Mag** was a virtual reality magazine. Each month a new issue arrives as a self-contained VR headset loaded with one experience built around that month. Like event television, the aim was a short, meaningful experience shared across a small community — everyone going through the same natural environment of Earth at the same time, building a sense of community through anticipation and shared reference. Its weakness was that it onboards people only at the start of a cycle: pick it up at the end of the month and you get two days with it. And its connection to the moon was decorative rather than structural. *Moon Mag* would work as well for a traveller from London in Sydney as it would for an astronaut.
+
+<figure>
+<img src="/images/heavens/pocket-home.png" alt="Hand-drawn concept sketches in orange and white on black for Pocket Home, showing a handheld device and a person entering a virtual version of their home" loading="lazy" />
+<figcaption>Pocket Home. One button, no headset, and you're standing in your own house.</figcaption>
+</figure>
 
 **Pocket Home** was the second: bring every aspect of the home into the digital world, accessed by pressing a single button, with no headset needed. Homes get shared like magazines — you look through articles and images, pull them straight off the page and into your home, or spend a holiday in someone else's by shifting into a cabin in Hobart or a tent in Yosemite. When you get home, the virtual and physical environments line up, so you cross between them without noticing. Move house and the bathrooms, kitchen and windows change, but the rest can stay the same.
 

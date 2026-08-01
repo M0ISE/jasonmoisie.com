@@ -46,6 +46,11 @@ As we explore this further, we'll come to understand how politics, education, re
 
 ## Why is it so complicated?
 
+<figure>
+<img src="/images/hiv/root-causes.png" alt="A mind map titled Root causes and related complex problems, with HIV at the centre and coloured branches running out to sex education, sex as societal taboo, lack of knowledge, stigma and shame, dating stigma, access to knowledge, cost of treatment versus prevention, prevention, access to testing and PrEP, higher infection rates in specific communities, and letting guard down — with dashed lines showing how those causes feed each other" loading="lazy" />
+<figcaption>Root causes, and the dashed lines are where they feed each other. The tangle is the argument.</figcaption>
+</figure>
+
 **HIV cannot be seen as a neutral topic.** With the history of the AIDS epidemic starting in the eighties, the politics of HIV treatment and prevention is inextricably associated with gay men and the wider LGBTQ community. Yet 27% of HIV notifications came from heterosexual sex in 2021 (AFAO 2023), an increase of 3% from 2020 (AFAO 2022). If these communities continue to believe that HIV is a virus that doesn't affect them, then infections will continue to rise, and lives that could have gone unaffected will be unnecessarily damaged.
 
 It is hard for the general population and key decision-makers to understand that HIV is a risk to everyone, not just men who have sex with men. A lot of this resistance stems back to the start of the AIDS epidemic and the moralistic sentiments and homophobia that slowed the initial response to the virus (Halkitis 2012). Within the general population these sentiments have largely lost favour, and yet in many ways there isn't a political will to engage with such a potentially charged area. Consider the recent religious discrimination bill, and the continuing dragging of trans kids into the political spotlight for short-term political gain. There is a risk that larger sweeping changes in policy around funding, education and prevention could garner the same kind of vitriolic attack from conservative communities.
@@ -77,6 +82,11 @@ Just in this simplified list, we can see how interdependent it is on educational
 **Each one of these steps along a person's journey with PrEP could be the site for a specific intervention.**
 
 ### Stakeholders any solution has to hold
+
+<figure>
+<img src="/images/hiv/stakeholder-map.png" alt="A stakeholder map for HIV prevention in Australia, grouping medical, educational, cultural and political actors and the relationships between them" loading="lazy" />
+<figcaption>Everyone with a stake, and how far each sits from the person the intervention is for.</figcaption>
+</figure>
 
 - **Medical** — general practitioners, pharmacists, testing clinics.
 - **Educators** — teachers, lecturers, community organisations.

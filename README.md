@@ -57,34 +57,46 @@ src/
     global.css       fonts, reset, shared utilities
 public/
   fonts/  pdf/  images/  brand/  CNAME
-legacy/              the pre-2026 hand-written site, kept for reference
+scripts/
+  dither.mjs         one-off image dithering — run manually, output committed
+docs/
+  work-template.md   how to add a piece
 ```
 
 ### Adding a piece
 
 Drop a Markdown file into `src/content/work/`. The filename becomes the URL.
 
+**→ [`docs/work-template.md`](docs/work-template.md) is the full guide** — a
+copy-paste template, every field explained, how to pick a flood colour, how to
+add dithered and undithered imagery, and the writing rules. Start there.
+
+The short version:
+
 ```markdown
 ---
 title: "Piece title"
-subtitle: "Optional line under the title"
-summary: "One or two sentences. Shown in the archive list and used as the meta description."
+summary: "One or two sentences. Archive list, homepage card, meta description."
 year: 2026
-endYear: 2026        # optional, for ongoing work
-type: essay          # essay | project | tool | experiment | model
-source: UNSW         # where it came from
-flood: blue          # blue | red | purple | green | tan
-pdf: filename.pdf    # optional, must exist in public/pdf/
-pdfOnly: false       # true while the PDF is still the real artefact
-featured: false      # surfaces it on the homepage
-draft: false         # true hides it from the build entirely
+month: 6              # optional, 1-12 — orders inside the year
+type: project         # essay | project | tool | experiment | model
+source: Lush
+flood: blue           # blue | red | purple | green | tan
+authorship: jason     # jason | ai-from-source | ai-original
+draft: true           # start here while writing
 ---
-
-Body copy in Markdown.
 ```
 
 The schema in `src/content.config.ts` is enforced at build time — a typo in
-`flood` or a missing `summary` fails the build rather than shipping broken.
+`flood`, a missing `summary` or an unknown `authorship` fails the build rather
+than shipping broken.
+
+Two commands:
+
+```bash
+npm run dev     # write with live reload
+npm run build   # confirm it passes before pushing
+```
 
 ---
 

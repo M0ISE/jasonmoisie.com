@@ -1,53 +1,86 @@
 ---
 import Base from "../layouts/Base.astro";
 
+/**
+ * Grouped by employer, not by role. Three years at Lush was invisible when
+ * every title sat as its own entry — the tenure is the point, the titles are
+ * the detail underneath it.
+ */
 const experience = [
   {
-    years: "2025 —",
-    role: "Operational Specialist, Tech Services",
-    place: "Lush, Australia & Aotearoa",
-    note: "Supporting stores across Australia and Aotearoa on the systems they run on — training, troubleshooting, and building the tooling that keeps a shop floor working when something breaks.",
-    projects: [
+    org: "Lush Fresh Handmade Cosmetics",
+    place: "Australia & Aotearoa",
+    span: "Oct 2023 — present",
+    tenure: "3 years",
+    roles: [
       {
-        year: "2026",
-        text: "Long-lead click and collect — localising the global system. Coordinating process and training across Digital Fulfilment, store teams and the UK dev team so it arrived working rather than arriving.",
+        years: "2025 — present",
+        current: true,
+        role: "Operational Specialist, Tech Services",
+        note: "Supporting stores across Australia and Aotearoa on the systems they run on — training, troubleshooting, and building the tooling that keeps a shop floor working when something breaks.",
+        projects: [
+          {
+            year: "2026",
+            text: "Long-lead click and collect — localising the global system. Coordinating process and training across Digital Fulfilment, store teams and the UK dev team so it arrived working rather than just arriving.",
+          },
+          {
+            year: "2026",
+            text: "B.O.T — a support bot so stores can solve in-a-pinch tech issues when Tech Services isn't available.",
+            href: "/work/bot-ai-chat-helper",
+          },
+          {
+            year: "2026",
+            text: "Mobile device management and fleet provisioning. Built configuration profiles in ScaleFusion for mass enrolment of Zebra TC27 scanners, till tablets, back-of-house machines and store phones — then held the MDM licences and security profiles across dozens of enterprise devices.",
+          },
+          {
+            year: "2025 – 2026",
+            text: "Lush Pay phase 2 — point-of-sale hardware rollout. Procurement and logistics for dozens of Epson TM-L100 label printers and CAS PND till scales, working out what deployment actually looks like in store and tailoring the install with each store's leadership team. Budgeting, vendor negotiation, and hands-on provisioning down to custom IP setups. I was on the floor for phase 1, so I took what went wrong there into how phase 2 was run.",
+          },
+        ],
       },
       {
-        year: "2026",
-        text: "B.O.T — a support bot so stores can solve in-a-pinch tech issues when Tech Services isn't available.",
-        href: "/work/bot-ai-chat-helper",
+        years: "2025",
+        role: "Assistant Manager",
+        place: "Parramatta",
+        note: "Piloted a new point-of-service and stock management system for our region and the country, then ran troubleshooting and onboarding for the rest of the region. Led the team through a visual merchandising realignment, and moved ordering closer to what the store actually needed to cut waste.",
+      },
+      {
+        years: "2024 – 2025",
+        role: "Supervisor",
+        place: "QVB",
+        note: "Onboarding and up-skilling the team, designing incentives against our targets, and building Power BI reports on customer trends — then using them to steer ordering, stock allocation, and to measure whether a merchandising change actually moved anything. Also ran the product-making workshops and parties.",
+      },
+      {
+        years: "2023 – 2024",
+        role: "Sales Assistant",
+        place: "QVB",
+        note: "Consults, stock, payments and POS, opening and closing.",
       },
     ],
   },
   {
-    years: "2025",
-    role: "Assistant Manager",
-    place: "Lush Parramatta",
-    note: "Piloted a new point-of-service and stock management system for our region and the country, then ran troubleshooting and onboarding for the rest of the region. Led the team through a visual merchandising realignment, and moved ordering closer to what the store actually needed to cut waste.",
+    org: "The Organic Bread Bar",
+    place: "Paddington",
+    span: "Nov 2022 — Jun 2023",
+    roles: [
+      {
+        years: "2022 – 2023",
+        role: "Evening Barista",
+        note: "Coffee, bread and pastry service, close-down and cash-up, wholesale production sheets, and training new starters on the particulars of an evening shift.",
+      },
+    ],
   },
   {
-    years: "2024 – 2025",
-    role: "Supervisor",
-    place: "Lush QVB",
-    note: "Onboarding and up-skilling the team, designing incentives against our targets, and building Power BI reports on customer trends — then using them to steer ordering, stock allocation, and to measure whether a merchandising change actually moved anything. Also ran the product-making workshops and parties.",
-  },
-  {
-    years: "2023 – 2024",
-    role: "Sales Assistant",
-    place: "Lush QVB",
-    note: "Consults, stock, payments and POS, opening and closing.",
-  },
-  {
-    years: "2022 – 2023",
-    role: "Evening Barista",
-    place: "The Organic Bread Bar",
-    note: "Coffee, bread and pastry service, close-down and cash-up, wholesale production sheets, and training new starters on the particulars of an evening shift.",
-  },
-  {
-    years: "2022",
-    role: "Barista & All-Rounder",
-    place: "Bluebottle Espresso, Manly",
-    note: "Front of house through weekend rushes — coffee, kitchen prep, POS.",
+    org: "Bluebottle Espresso",
+    place: "Manly",
+    span: "Jun — Nov 2022",
+    roles: [
+      {
+        years: "2022",
+        role: "Barista & All-Rounder",
+        note: "Front of house through weekend rushes — coffee, kitchen prep, POS.",
+      },
+    ],
   },
 ];
 
@@ -80,33 +113,26 @@ const links = [
 
 <Base
   title="The Human — Jason Moisiadis"
-  description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling — currently building operational systems at Lush."
+  description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling — currently in Tech Services at Lush."
 >
   <section class="wrap">
-    <h1>A bit about me <span aria-hidden="true">⛅</span></h1>
+    <h1>A bit about me</h1>
 
-    <div class="bio flow">
+    <div class="bio">
       <p>
         I'm an experience designer grounded in UX and service design. I like
         opening a problem up properly — enough user research to find what's
         actually driving it — before spending time building the wrong solution.
-      </p>
-      <p>
         My immersive work has focused on experiences that aren't obsessively
         reliant on screens and headsets, using sensemaking principles to work
-        across all of someone's senses rather than just their eyes. I'm
-        particularly interested in narrative design — how it builds levels
-        people come back to, and how it doubles as a tool for examining wicked
-        problems alongside modelling and simulation.
+        across all of someone's senses rather than just their eyes.
       </p>
       <p>
-        All of which is what I actually use day to day. In Tech Services at Lush
-        I've piloted point-of-sale and stock systems across the region, built
-        training that sticks, and automated the boring parts so the people on
-        the floor can get on with the actual work — and every one of those is a
-        research problem before it's a technical one. “Design a system humans can
-        live inside” doesn't change much between an immersive experience and a
-        Tuesday afternoon in retail.
+        All of which is what I use day to day. In Tech Services at Lush I've
+        piloted point-of-sale and stock systems across the region, built
+        training that sticks, and automated the boring parts so people on the
+        floor can get on with the actual work — and every one of those is a
+        research problem before it's a technical one.
       </p>
     </div>
 
@@ -114,37 +140,50 @@ const links = [
       <div class="main">
         <section class="block">
           <h2 class="label">Experience ↓</h2>
-          <ul class="exp">
-            {
-              experience.map((e) => (
-                <li>
-                  <span class="e-years">{e.years}</span>
-                  <div>
-                    <h3 class="e-role">
-                      {e.role} <span class="e-place">— {e.place}</span>
-                    </h3>
-                    <p class="e-note">{e.note}</p>
-                    {
-                      e.projects && (
-                        <ul class="proj">
-                          {e.projects.map((p) => (
-                            <li>
-                              {p.year && <span class="p-year">{p.year}</span>}
-                              {p.href ? (
-                                <a href={p.href}>{p.text}</a>
-                              ) : (
-                                p.text
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      )
-                    }
-                  </div>
-                </li>
-              ))
-            }
-          </ul>
+
+          {
+            experience.map((org) => (
+              <article class="org">
+                <header class="org-head">
+                  <h3 class="org-name">
+                    {org.org} <span class="org-place">— {org.place}</span>
+                  </h3>
+                  <p class="org-span">
+                    {org.span}
+                    {org.tenure && <span class="tenure">{org.tenure}</span>}
+                  </p>
+                </header>
+
+                <ul class="roles">
+                  {org.roles.map((r) => (
+                    <li>
+                      <span class="e-years">
+                        {r.years}
+                        {r.current && <span class="now" aria-label="current role">●</span>}
+                      </span>
+                      <div>
+                        <h4 class="e-role">
+                          {r.role}
+                          {r.place && <span class="e-place"> — {r.place}</span>}
+                        </h4>
+                        <p class="e-note">{r.note}</p>
+                        {r.projects && (
+                          <ul class="proj">
+                            {r.projects.map((p) => (
+                              <li>
+                                <span class="p-year">{p.year}</span>
+                                {p.href ? <a href={p.href}>{p.text}</a> : p.text}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
         </section>
 
         <figure>
@@ -160,6 +199,21 @@ const links = [
       </div>
 
       <aside class="side">
+        <section class="block">
+          <h2 class="label">Education ↓</h2>
+          <ul class="edu">
+            {
+              education.map((e) => (
+                <li>
+                  <span class="e-years">{e.years}</span>
+                  <span class="ed-award">{e.award}</span>
+                  <span class="ed-place">{e.place}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
         <section class="block">
           <h2 class="label">Let's chat ↓</h2>
           <ul class="links">
@@ -186,21 +240,6 @@ const links = [
             </li>
           </ul>
         </section>
-
-        <section class="block">
-          <h2 class="label">Education ↓</h2>
-          <ul class="edu">
-            {
-              education.map((e) => (
-                <li>
-                  <span class="e-years">{e.years}</span>
-                  <span class="ed-award">{e.award}</span>
-                  <span class="ed-place">{e.place}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
       </aside>
     </div>
   </section>
@@ -219,6 +258,8 @@ const links = [
     font-size: var(--step-1);
     max-width: var(--measure);
     margin-block-start: clamp(1.8rem, 4vh, 2.6rem);
+    display: grid;
+    gap: 1.1em;
   }
   .bio p { text-wrap: pretty; }
 
@@ -233,33 +274,67 @@ const links = [
   }
 
   .block + .block { margin-block-start: 2.6rem; }
-  .block h2 { padding-block-end: .5rem; border-bottom: 1px solid var(--rule); }
+  .block > h2 { padding-block-end: .5rem; border-bottom: 1px solid var(--rule); }
 
   ul { list-style: none; margin: 0; padding: 0; }
 
-  /* --- experience --- */
-  .exp { margin-block-start: .4rem; }
-  /* direct children only — nested project lists must not inherit the
-     two-column role layout or the dividing rules */
-  .exp > li {
+  /* --- employer grouping --- */
+  .org { margin-block-start: 2rem; }
+
+  .org-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block-end: .5rem;
+    border-bottom: 1.5px solid var(--fg);
+  }
+  .org-name {
+    font-size: var(--step-1);
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .org-place { font-weight: 400; color: var(--fg-soft); }
+  .org-span {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .1em;
+    color: var(--fg-soft);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    white-space: nowrap;
+  }
+  .tenure {
+    border: 1px solid var(--rule);
+    padding: .1rem .45rem;
+    color: var(--fg);
+  }
+
+  /* direct children only — nested project lists must not inherit this */
+  .roles > li {
     display: grid;
     grid-template-columns: 1fr;
     gap: .35rem;
-    padding-block: 1.3rem;
+    padding-block: 1.2rem;
   }
-  .exp > li + li { border-top: 1px solid var(--rule); }
+  .roles > li + li { border-top: 1px solid var(--rule); }
   @media (min-width: 620px) {
-    .exp > li { grid-template-columns: 8.5rem 1fr; gap: 1.2rem; }
+    .roles > li { grid-template-columns: 9.5rem 1fr; gap: 1.2rem; }
   }
 
   .e-years {
     font-family: var(--font-mono);
     font-size: var(--step--1);
-    letter-spacing: .12em;
+    letter-spacing: .1em;
     color: var(--fg-soft);
     padding-block-start: .3em;
-    white-space: nowrap;
+    display: flex;
+    align-items: baseline;
+    gap: .4rem;
   }
+  .now { color: var(--flood-green); font-size: .7em; }
 
   .e-role {
     font-size: var(--step-1);
@@ -276,7 +351,6 @@ const links = [
     text-wrap: pretty;
   }
 
-  /* named projects under a role — the things worth pointing at */
   .proj {
     margin-block-start: .9rem;
     display: flex;
@@ -297,7 +371,6 @@ const links = [
     inset-inline-start: 0;
     color: var(--accent);
   }
-
   .p-year {
     font-family: var(--font-mono);
     letter-spacing: .1em;
@@ -329,7 +402,6 @@ const links = [
   .ed-award { font-weight: 700; line-height: 1.25; }
   .ed-place { font-size: var(--step--1); color: var(--fg-soft); }
 
-  /* --- skills map --- */
   figure { margin: clamp(2.5rem, 6vh, 3.5rem) 0 0; }
   figure img { border: 1.5px solid var(--rule); }
   figcaption { margin-block-start: .6rem; }
