@@ -7,12 +7,13 @@ type: project
 source: UNSW
 flood: tan
 pdf: Found.pdf
-pdfOnly: true
+authorship: ai-from-source
+authorshipNote: "Claude's prose, from Jason's 2023 case study PDF."
 ---
 
-A short process piece rather than a big one — one loop of prototype, test, rethink.
+**Would this work for anyone who isn't me?**
 
-The brief came out of feedback on an earlier submission, which asked the obvious and slightly deflating question: **would this work for anyone who isn't me?** Fair. So I took an existing Figma prototype of a task-and-reminder app, made minor edits to the flow, and got it straight into other people's hands.
+That was the feedback on an earlier submission. Obvious, slightly deflating, and fair. So I took an existing Figma prototype of a task-and-reminder app, made minor edits to the flow, and got it straight into other people's hands.
 
 ## Testing it in a living room
 

@@ -8,6 +8,8 @@ source: UNSW
 flood: purple
 pdf: superposition.pdf
 featured: true
+authorship: jason
+authorshipNote: "Essay body is Jason's 2021 writing verbatim, recovered from JS string literals. Claude wrote the two-sentence intro, repaired concatenation artifacts, and placed the gallery."
 ---
 
 I wrote this about Lindy Lee's 2018 series *true ch'ien*, and used it to think about choices and consequences — how we're connected to and defined by the choices we make, as much as by the choices we didn't.

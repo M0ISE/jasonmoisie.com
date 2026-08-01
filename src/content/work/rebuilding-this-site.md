@@ -7,6 +7,8 @@ type: project
 source: Personal
 flood: tan
 featured: true
+authorship: ai-original
+authorshipNote: "Written by Claude in Jason's first person, about working with Claude. Jason's own reflection still to be added."
 ---
 
 [The old site](/work/the-old-site) had been frozen since August 2023. I knew roughly what was wrong with it. I did not have a spare fortnight to fix it.

@@ -23,6 +23,21 @@ const work = defineCollection({
     pdfOnly: z.boolean().default(false),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
+
+    /**
+     * Internal record of who actually wrote the prose on the page. Not
+     * rendered — it exists so the provenance of every piece is explicit
+     * rather than remembered, and so new pieces have to declare it.
+     *
+     *  jason          — Jason's own writing, reproduced. Formatting and
+     *                   typo repair only.
+     *  ai-from-source — Claude wrote the page prose, working from a source
+     *                   document of Jason's (a PDF, a repo, a transcript).
+     *  ai-original    — Claude wrote it with no source document behind it.
+     */
+    authorship: z.enum(["jason", "ai-from-source", "ai-original"]),
+    /** Nuance the enum can't carry — which parts are whose. */
+    authorshipNote: z.string().optional(),
   }),
 });
 

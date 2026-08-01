@@ -8,6 +8,8 @@ source: UNSW
 flood: blue
 pdf: PrEP.pdf
 featured: true
+authorship: jason
+authorshipNote: "Jason's 2021 paper, recovered from JS string literals. Claude wrote the intro, the section headings and the figure captions."
 ---
 
 If PrEP prevents almost every HIV infection, and a lifetime of HIV treatment costs the Commonwealth around a million dollars per person, the economic case for subsidising it looks trivial. So I built a model to ask whether cost is actually the binding constraint.

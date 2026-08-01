@@ -8,6 +8,8 @@ source: UNSW
 flood: red
 pdf: wickedProblemOf_HIV_Prevention.pdf
 featured: true
+authorship: jason
+authorshipNote: "Jason's 2023 essay. Claude wrote the one-line intro, added section headings, and did a light typo pass."
 ---
 
 A challenges analysis: what makes HIV prevention in Australia a *wicked* problem rather than merely a hard one, and where design research could actually get purchase on it.

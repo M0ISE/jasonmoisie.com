@@ -7,9 +7,11 @@ endYear: 2023
 type: project
 source: Personal
 flood: tan
+authorship: ai-original
+authorshipNote: "Written by Claude from its own audit of the 2022 codebase."
 ---
 
-Before this, jasonmoisie.com was a hand-written static site. No framework, no build step — HTML files in a folder, `skeleton.css` for the grid, jQuery for the interactions, and a Google Font import at the top of every page.
+HTML files in a folder, `skeleton.css` for the grid, jQuery for the interactions, and a Google Font import at the top of every page. No framework, no build step.
 
 I liked building it that way. It taught me a lot. It also stopped dead on **9 August 2023** and then sat there for three years telling anyone who visited that I was *"almost done studying my Masters degree."*
 

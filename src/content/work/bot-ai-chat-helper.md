@@ -8,6 +8,8 @@ source: Lush
 summary: "A Level 1 tech support bot for retail staff, built for the worst thirty seconds of a shift. The interesting problems were not the model."
 flood: green
 featured: true
+authorship: ai-original
+authorshipNote: "Drafted by Claude from the repo. Jason supplied the Tech Services framing and drew the line on what could not be published."
 ---
 
 I work in Tech Services, supporting stores across Australia and Aotearoa. We aren't available around the clock. Stores are. B.O.T covers that gap.
@@ -36,7 +38,7 @@ Because there's no retrieval layer, **the model does its own matching — which 
 
 Each entry carries a list of how people actually ask about that problem. Not the correct name for the fault: the thing someone says when they're frustrated and don't know the correct name. Get those wrong and the entry is invisible no matter how good the answer underneath is.
 
-So the highest-leverage work turned out to be user research wearing an engineering hat. Listening to how staff describe a broken thing under pressure, and writing that down verbatim. It's the same sensemaking problem as any immersive experience — meet people inside the language they already have, not the one the system prefers.
+So the work with the most payoff turned out to be user research wearing an engineering hat. Listening to how staff describe a broken thing under pressure, and writing that down verbatim. It's the same sensemaking problem as any immersive experience — meet people inside the language they already have, not the one the system prefers.
 
 ## Designing for the person who edits it next
 
