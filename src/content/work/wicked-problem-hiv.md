@@ -3,11 +3,13 @@ title: "The wicked problem of HIV prevention"
 subtitle: "Sexual education and the PrEP rollout"
 summary: "Why HIV prevention in Australia resists a clean solution — and what politics, education, religion, economics and history each contribute to the mess."
 year: 2023
+month: 3
 type: essay
 source: UNSW
 flood: red
 pdf: wickedProblemOf_HIV_Prevention.pdf
 featured: true
+pinned: 4
 authorship: jason
 authorshipNote: "Jason's 2023 essay. Claude wrote the one-line intro, added section headings, and did a light typo pass."
 ---

@@ -6,24 +6,34 @@ const isAbout = pathname.startsWith("/about");
 ---
 
 <nav aria-label="Primary">
+  <!--
+    ΗΟΜΕ is Greek — Eta, Omicron, Mu, Epsilon. It reads as HOME and is a nod
+    to Jason's Greek background. Verified present in PP Mondwest rather than
+    silently falling back. aria-label carries the Latin word so a screen
+    reader announces "Home" and not four Greek letters.
+  -->
+  <a class="home" href="/" aria-label="Home" aria-current={isHome ? "page" : undefined}>
+    <span class="greek" lang="el" aria-hidden="true">ΗΟΜΕ</span>
+  </a>
+
   <ul>
-    <li>
-      <a class="home" href="/" aria-current={isHome ? "page" : undefined}>
-        <span class="glyph" aria-hidden="true"></span>
-        <span class="sr-only">Home</span>
-      </a>
-    </li>
     <li><a href="/work" aria-current={isWork ? "page" : undefined}>The Work ✨</a></li>
     <li><a href="/about" aria-current={isAbout ? "page" : undefined}>The Human ☕</a></li>
   </ul>
 </nav>
 
 <style>
-  nav { padding-block: 1.1rem 0; }
+  nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem clamp(1rem, 3vw, 2.4rem);
+    flex-wrap: wrap;
+    padding-block: 1.1rem 0;
+  }
 
   ul {
     display: flex;
-    align-items: baseline;
     gap: clamp(1rem, 3vw, 2.4rem);
     list-style: none;
     margin: 0;
@@ -38,30 +48,23 @@ const isAbout = pathname.startsWith("/about");
     white-space: nowrap;
   }
 
-  a:hover,
-  a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; }
+  ul a:hover,
+  ul a:focus-visible,
+  ul a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
 
-  a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
-
-  /* The mark: an empty square that fills in when you reach for it. */
+  /* The mark runs through the archive's flood colours on hover — the same
+     five that paint the work pages, plus a true orange. */
   .home {
     font-size: var(--step-2);
-    line-height: 1;
-    text-decoration: none;
-  }
-  .home:hover,
-  .home:focus-visible,
-  .home[aria-current="page"] { text-decoration: none; }
-
-  .glyph::before {
-    content: "■";
-    display: inline-block;
+    letter-spacing: .06em;
   }
 
-  /* On hover the mark runs through the archive's flood colours — the same
-     five that paint the work pages. */
-  .home:hover .glyph::before,
-  .home:focus-visible .glyph::before {
+  .home:hover .greek,
+  .home:focus-visible .greek,
+  .home[aria-current="page"] .greek {
     background: linear-gradient(
       90deg,
       var(--flood-blue),
@@ -76,6 +79,10 @@ const isAbout = pathname.startsWith("/about");
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .home:hover .greek,
+  .home:focus-visible .greek {
     animation: flood-cycle .7s linear infinite;
   }
 
@@ -85,7 +92,7 @@ const isAbout = pathname.startsWith("/about");
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .home:hover .glyph::before,
-    .home:focus-visible .glyph::before { animation: none; }
+    .home:hover .greek,
+    .home:focus-visible .greek { animation: none; }
   }
 </style>

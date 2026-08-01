@@ -13,6 +13,8 @@ const work = defineCollection({
     subtitle: z.string().optional(),
     summary: z.string(),
     year: z.number(),
+    /** 1-12. Gives the archive real ordering inside a year, not just a bucket. */
+    month: z.number().int().min(1).max(12).optional(),
     endYear: z.number().optional(),
     type: z.enum(["essay", "project", "tool", "experiment", "model"]),
     source: z.string(),
@@ -22,6 +24,12 @@ const work = defineCollection({
     /** True when the piece has no native text yet and the PDF is the artefact. */
     pdfOnly: z.boolean().default(false),
     featured: z.boolean().default(false),
+    /**
+     * Homepage ordering. Lower numbers sit first. Anything without a pin
+     * falls in behind the pinned ones, newest first — so the default is
+     * chronological and pinning is the deliberate override.
+     */
+    pinned: z.number().int().optional(),
     draft: z.boolean().default(false),
 
     /**

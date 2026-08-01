@@ -3,10 +3,13 @@ title: "The role of technology in the speculative future of HER"
 subtitle: "Can technology solve human problems?"
 summary: "On Spike Jonze's 2013 film, and a future where the technology is warm, competent, and accommodating a problem it cannot actually solve."
 year: 2021
+month: 4
 type: essay
 source: UNSW
 flood: red
 pdf: speculativeFuture.pdf
+featured: true
+pinned: 1
 authorship: ai-from-source
 authorshipNote: "Claude's prose, from Jason's 2021 essay PDF."
 ---

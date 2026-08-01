@@ -3,10 +3,13 @@ title: "Intentional / Accidental"
 subtitle: "Ceramic → digital → ceramic again"
 summary: "Moving clay through 3D scanning, mesh editing and plaster casting, then back into clay — and working out which accidents along the way are the actual work."
 year: 2022
+month: 11
 type: project
 source: UNSW
 flood: tan
 pdf: majorProject.pdf
+featured: true
+pinned: 5
 authorship: ai-from-source
 authorshipNote: "Claude's prose, from Jason's 2022 process documentation."
 ---

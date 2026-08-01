@@ -1,13 +1,14 @@
 ---
 title: "B.O.T"
 subtitle: "A support bot for people who are mid-shift"
-year: 2025
-endYear: 2026
+year: 2026
+month: 6
 type: tool
 source: Lush
 summary: "A Level 1 tech support bot for retail staff, built for the worst thirty seconds of a shift. The interesting problems were not the model."
 flood: green
 featured: true
+pinned: 2
 authorship: ai-original
 authorshipNote: "Drafted by Claude from the repo. Jason supplied the Tech Services framing and drew the line on what could not be published."
 ---

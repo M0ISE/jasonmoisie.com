@@ -3,6 +3,7 @@ title: "Found"
 subtitle: "A task app, tested and rethought"
 summary: "A small design-iteration study: prototype a reminder app, put it in front of people, find out the fun part is the part they don't want."
 year: 2023
+month: 4
 type: project
 source: UNSW
 flood: tan

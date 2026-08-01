@@ -3,10 +3,12 @@ title: "Rebuilding this site"
 subtitle: "Designing with an AI, out loud"
 summary: "Three years stale, rebuilt in an afternoon of conversation. What AI co-design was actually good at, and where it still needed someone with taste in the room."
 year: 2026
+month: 8
 type: project
 source: Personal
 flood: tan
 featured: true
+pinned: 3
 authorship: ai-original
 authorshipNote: "Written by Claude in Jason's first person, about working with Claude. Jason's own reflection still to be added."
 ---

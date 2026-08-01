@@ -1,29 +1,24 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
+import { byNewest, shelf, datelineShort, span } from "../../lib/work";
 
-/** Ongoing work belongs to its most recent year, not the year it started. */
-const shelf = (p: { data: { year: number; endYear?: number } }) =>
-  p.data.endYear ?? p.data.year;
-
-const all = (await getCollection("work", ({ data }) => !data.draft)).sort(
-  (a, b) => shelf(b) - shelf(a) || a.data.title.localeCompare(b.data.title)
-);
+const all = (await getCollection("work", ({ data }) => !data.draft)).sort(byNewest);
 
 // group by year, newest first — the archive reads as a timeline
 const years = [...new Set(all.map(shelf))].sort((a, b) => b - a);
-const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.map(shelf))}`;
+const range = span(all);
 const countFor = (y: number) => all.filter((p) => shelf(p) === y).length;
 ---
 
 <Base
   title="The Work — Jason Moisiadis"
-  description={`An archive of essays, projects and experiments, ${span}.`}
+  description={`An archive of essays, projects and experiments, ${range}.`}
 >
   <section class="wrap">
     <header class="head">
       <h1>The archive</h1>
-      <p class="label">{all.length} pieces · {span}</p>
+      <p class="label">{all.length} pieces · {range}</p>
     </header>
 
     <div class="archive">
@@ -63,7 +58,7 @@ const countFor = (y: number) => all.filter((p) => shelf(p) === y).length;
                         <span class="t">{p.data.title}</span>
                         <span class="s">{p.data.summary}</span>
                         <span class="m">
-                          {p.data.type} · {p.data.source}
+                          {datelineShort(p)} · {p.data.type} · {p.data.source}
                           {p.data.pdf ? " · PDF" : ""}
                         </span>
                       </a>

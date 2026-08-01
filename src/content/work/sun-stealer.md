@@ -3,6 +3,7 @@ title: "sun stealer"
 subtitle: "Game design document"
 summary: "A VR game on Bondi Beach at a dawn that never breaks, where camera lenses are time periods and film stocks are abilities."
 year: 2021
+month: 9
 type: project
 source: UNSW
 flood: blue

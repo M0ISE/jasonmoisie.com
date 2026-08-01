@@ -1,16 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
+import { byNewest, byPinThenNewest, datelineShort, span } from "../lib/work";
 
-/** Ongoing work sorts by its most recent year, matching the archive. */
-const shelf = (p: { data: { year: number; endYear?: number } }) =>
-  p.data.endYear ?? p.data.year;
-
-const all = (await getCollection("work", ({ data }) => !data.draft)).sort(
-  (a, b) => shelf(b) - shelf(a)
-);
-const featured = all.filter((p) => p.data.featured).slice(0, 4);
-const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.map(shelf))}`;
+const all = (await getCollection("work", ({ data }) => !data.draft)).sort(byNewest);
+const featured = all.filter((p) => p.data.featured).sort(byPinThenNewest).slice(0, 6);
+const range = span(all);
 ---
 
 <Base
@@ -18,28 +13,29 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
   description="An archive of work, essays and experiments by Jason Moisiadis. Immersive experience designer, Sydney."
 >
   <section class="wrap hero">
-    <p class="label byline">Jason Moisiadis · they/he · Sydney</p>
+    <div class="hero-top">
+      <h1 class="pixel">me</h1>
 
-    <h1 class="pixel">Turning messy&nbsp;problems into calm,&nbsp;working systems</h1>
-
-    <p class="intro">
-      Right now that's Tech Services at Lush — training, troubleshooting, and
-      building the tooling that keeps a shop floor running when something
-      breaks. I got here through immersive and user-centred design, and it's
-      less of a swerve than it sounds: working out what people actually need
-      before you build them something is the same discipline whether the thing
-      is an immersive experience or a stock system.
-    </p>
+      <dl class="meta">
+        <div><dt>Who</dt><dd>Jason Moisiadis · they/he</dd></div>
+        <div><dt>Where</dt><dd>Sydney</dd></div>
+        <div><dt>Currently</dt><dd>Tech Services, Lush · 3 years</dd></div>
+      </dl>
+    </div>
 
     <p class="intro">
-      This is the archive — essays, experiments and things I've made.
+      I turn messy problems into calm, working systems. I got here through
+      immersive and user-centred design, and it's less of a swerve than it
+      sounds: working out what people actually need before you build them
+      something is the same discipline whether the thing is an immersive
+      experience or a stock system.
     </p>
   </section>
 
   <section class="wrap featured">
     <div class="sec-head">
       <h2 class="label">Some things I've made</h2>
-      <a class="all" href="/work">All {all.length} pieces, {span} →</a>
+      <a class="all" href="/work">All {all.length} pieces, {range} →</a>
     </div>
 
     <ul class="cards">
@@ -49,9 +45,7 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
             <a href={`/work/${p.id}`} data-flood={p.data.flood} class="card">
               <span class="c-type">{p.data.type}</span>
               <span class="c-title">{p.data.title}</span>
-              <span class="c-meta">
-                {p.data.source} · {p.data.endYear ? `${p.data.year}–${p.data.endYear}` : p.data.year}
-              </span>
+              <span class="c-meta">{p.data.source} · {datelineShort(p)}</span>
             </a>
           </li>
         ))
@@ -63,14 +57,35 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
 <style>
   .hero { padding-block-end: clamp(3rem, 12vh, 7rem); }
 
-  .byline { margin-block-end: 1.4rem; }
+  /* One word, and a small block of facts holding the other side of the line. */
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-block-end: 1rem;
+    border-bottom: 1.5px solid var(--fg);
+  }
 
   h1 {
-    font-size: var(--step-4);
-    line-height: .9;
-    max-width: 16ch;
+    font-size: clamp(4rem, 16vw, 11rem);
+    line-height: .8;
     letter-spacing: 0;
   }
+
+  .meta {
+    margin: 0;
+    display: grid;
+    gap: .35rem;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .08em;
+    text-align: right;
+  }
+  .meta div { display: flex; gap: .6rem; justify-content: flex-end; }
+  .meta dt { text-transform: uppercase; color: var(--fg-soft); }
+  .meta dd { margin: 0; }
 
   .intro {
     max-width: var(--measure);
@@ -110,6 +125,10 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
 
   /* Two across, not four. At four the cards were ~260px, which is too
      narrow for uppercase display type — long titles had nowhere to go. */
+  @media (min-width: 1000px) {
+    .cards { grid-template-columns: repeat(3, 1fr); }
+  }
+
   @media (min-width: 700px) {
     .cards {
       grid-template-columns: repeat(2, 1fr);

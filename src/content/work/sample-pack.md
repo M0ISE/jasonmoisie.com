@@ -3,6 +3,7 @@ title: "Sample Pack"
 subtitle: "A folio, 2023"
 summary: "The folio assembled at the end of the Masters — a professional bio, the skills map, work excerpts, and a poem."
 year: 2023
+month: 8
 type: project
 source: UNSW
 flood: purple

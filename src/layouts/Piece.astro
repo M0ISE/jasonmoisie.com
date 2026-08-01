@@ -1,6 +1,7 @@
 ---
 import Base from "./Base.astro";
 import type { CollectionEntry } from "astro:content";
+import { dateline } from "../lib/work";
 
 interface Props {
   entry: CollectionEntry<"work">;
@@ -8,13 +9,13 @@ interface Props {
 
 const { entry } = Astro.props;
 const d = entry.data;
-const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
+const when = dateline(entry);
 ---
 
 <Base title={`${d.title} — Jason Moisiadis`} description={d.summary} flood={d.flood}>
   <article class="wrap">
     <header class="piece-head">
-      <p class="label">{d.type} · {d.source} · {dateline}</p>
+      <p class="label">{d.type} · {d.source} · {when}</p>
       <h1>{d.title}</h1>
       {d.subtitle && <p class="subtitle">{d.subtitle}</p>}
       <p class="summary">{d.summary}</p>
@@ -32,6 +33,22 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
       <slot />
     </div>
 
+    {
+      /* Several pieces close with "in the PDF below". The header button is
+         above, so without this there is nothing below and the line lies. */
+      d.pdf && (
+        <aside class="pdf-foot">
+          <a href={`/pdf/${d.pdf}`}>
+            <span class="pf-mark" aria-hidden="true">♦</span>
+            <span class="pf-text">
+              <strong>{d.title} — the original</strong>
+              <span class="pf-meta">PDF · opens in this tab</span>
+            </span>
+          </a>
+        </aside>
+      )
+    }
+
     <p class="back"><a href="/work">← Back to the archive</a></p>
   </article>
 </Base>
@@ -43,11 +60,14 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
     border-bottom: 1.5px solid var(--rule);
   }
 
+  /* The hard offset shadow from the design direction — flat, un-blurred,
+     the way it sits on a printed tee. This is the pop the pages were missing. */
   h1 {
     font-size: var(--step-4);
     text-transform: uppercase;
     letter-spacing: -.035em;
     margin-block: .5rem 0;
+    text-shadow: .06em .06em 0 var(--ground-2);
   }
 
   .subtitle {
@@ -178,6 +198,31 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
     font-size: var(--step--1);
     color: var(--fg-soft);
     max-width: var(--measure);
+  }
+
+  .pdf-foot {
+    margin-block-start: clamp(2.5rem, 7vh, 4rem);
+    max-width: var(--measure);
+  }
+  .pdf-foot a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.3rem;
+    border: 1.5px solid var(--fg);
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .pdf-foot a:hover { background: var(--fg); color: var(--ground); }
+  .pf-mark { font-family: var(--font-pixel); font-size: var(--step-2); line-height: 1; }
+  .pf-text { display: flex; flex-direction: column; gap: .2rem; }
+  .pf-text strong { font-weight: 700; line-height: 1.2; }
+  .pf-meta {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .75;
   }
 
   .back {

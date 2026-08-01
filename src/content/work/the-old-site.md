@@ -3,6 +3,7 @@ title: "The old site"
 subtitle: "Hand-written, then frozen for three years"
 summary: "The site this one replaced — built by hand in 2022, abandoned in 2023, and still telling everyone I was almost finished with my Masters until 2026."
 year: 2022
+month: 8
 endYear: 2023
 type: project
 source: Personal
