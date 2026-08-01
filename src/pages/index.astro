@@ -13,22 +13,21 @@ const range = span(all);
   description="An archive of work, essays and experiments by Jason Moisiadis. Immersive experience designer, Sydney."
 >
   <section class="wrap hero">
-    <div class="hero-top">
-      <h1 class="pixel">me</h1>
+    <p class="label byline">Jason Moisiadis · they/he · Sydney</p>
 
-      <dl class="meta">
-        <div><dt>Who</dt><dd>Jason Moisiadis · they/he</dd></div>
-        <div><dt>Where</dt><dd>Sydney</dd></div>
-        <div><dt>Currently</dt><dd>Tech Services, Lush · 3 years</dd></div>
-      </dl>
-    </div>
+    <h1 class="pixel">Turning messy&nbsp;problems into calm,&nbsp;working systems</h1>
 
     <p class="intro">
-      I turn messy problems into calm, working systems. I got here through
-      immersive and user-centred design, and it's less of a swerve than it
-      sounds: working out what people actually need before you build them
-      something is the same discipline whether the thing is an immersive
-      experience or a stock system.
+      Right now that's Tech Services at Lush — training, troubleshooting, and
+      building the tooling that keeps a shop floor running when something
+      breaks. I got here through immersive and user-centred design, and it's
+      less of a swerve than it sounds: working out what people actually need
+      before you build them something is the same discipline whether the thing
+      is an immersive experience or a stock system.
+    </p>
+
+    <p class="intro">
+      This is the archive — essays, experiments and things I've made.
     </p>
   </section>
 
@@ -57,35 +56,14 @@ const range = span(all);
 <style>
   .hero { padding-block-end: clamp(3rem, 12vh, 7rem); }
 
-  /* One word, and a small block of facts holding the other side of the line. */
-  .hero-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 2rem;
-    flex-wrap: wrap;
-    padding-block-end: 1rem;
-    border-bottom: 1.5px solid var(--fg);
-  }
+  .byline { margin-block-end: 1.4rem; }
 
   h1 {
-    font-size: clamp(4rem, 16vw, 11rem);
-    line-height: .8;
+    font-size: var(--step-4);
+    line-height: .9;
+    max-width: 16ch;
     letter-spacing: 0;
   }
-
-  .meta {
-    margin: 0;
-    display: grid;
-    gap: .35rem;
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: .08em;
-    text-align: right;
-  }
-  .meta div { display: flex; gap: .6rem; justify-content: flex-end; }
-  .meta dt { text-transform: uppercase; color: var(--fg-soft); }
-  .meta dd { margin: 0; }
 
   .intro {
     max-width: var(--measure);

@@ -116,7 +116,15 @@ const links = [
   description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling — currently in Tech Services at Lush."
 >
   <section class="wrap">
-    <h1>A bit about me</h1>
+    <div class="hero-top">
+      <h1 class="pixel">me</h1>
+
+      <dl class="meta">
+        <div><dt>Who</dt><dd>Jason Moisiadis · they/he</dd></div>
+        <div><dt>Where</dt><dd>Sydney</dd></div>
+        <div><dt>Currently</dt><dd>Tech Services, Lush · 3 years</dd></div>
+      </dl>
+    </div>
 
     <div class="bio">
       <p>
@@ -246,13 +254,35 @@ const links = [
 </Base>
 
 <style>
-  h1 {
-    font-size: var(--step-3);
-    text-transform: uppercase;
-    letter-spacing: -.03em;
+  /* One word, and a small block of facts holding the other side of the line. */
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
     padding-block-end: 1rem;
     border-bottom: 1.5px solid var(--fg);
   }
+
+  h1 {
+    font-size: clamp(4rem, 16vw, 11rem);
+    line-height: .8;
+    letter-spacing: 0;
+  }
+
+  .meta {
+    margin: 0;
+    display: grid;
+    gap: .35rem;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .08em;
+    text-align: right;
+  }
+  .meta div { display: flex; gap: .6rem; justify-content: flex-end; }
+  .meta dt { text-transform: uppercase; color: var(--fg-soft); }
+  .meta dd { margin: 0; }
 
   .bio {
     font-size: var(--step-1);
