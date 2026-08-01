@@ -91,6 +91,18 @@ const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
   .body :global(hr) { margin-block: 2.5rem; }
   .body :global(em) { font-style: italic; }
 
+  .body :global(blockquote) {
+    margin: 2rem 0;
+    padding-inline-start: 1.2rem;
+    border-inline-start: 3px solid var(--fg);
+    color: var(--fg-soft);
+    font-style: italic;
+  }
+  .body :global(blockquote p + p) { margin-block-start: .8em; }
+
+  .body :global(a) { text-decoration-color: var(--fg-soft); }
+  .body :global(a:hover) { text-decoration-color: currentColor; }
+
   .back {
     margin-block-start: clamp(3rem, 8vh, 5rem);
     font-family: var(--font-pixel);
