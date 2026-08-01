@@ -54,7 +54,7 @@ const isAbout = pathname.startsWith("/about");
   .home[aria-current="page"] { text-decoration: none; }
 
   .glyph::before {
-    content: "∆";
+    content: "■";
     display: inline-block;
   }
 
@@ -65,10 +65,11 @@ const isAbout = pathname.startsWith("/about");
     background: linear-gradient(
       90deg,
       var(--flood-blue),
-      var(--flood-red),
       var(--flood-purple),
-      var(--flood-green),
+      var(--flood-red),
+      var(--riso-orange),
       var(--flood-tan),
+      var(--flood-green),
       var(--flood-blue)
     );
     background-size: 300% 100%;

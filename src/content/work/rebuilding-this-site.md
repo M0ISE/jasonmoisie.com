@@ -5,7 +5,7 @@ summary: "Three years stale, rebuilt in an afternoon of conversation. What AI co
 year: 2026
 type: project
 source: Personal
-flood: red
+flood: tan
 featured: true
 ---
 
@@ -40,7 +40,7 @@ That was true and I hadn't clocked it. The resolution wasn't to split the differ
 
 Plenty.
 
-**Taste is not delegable.** Every real decision here was mine: paper over charcoal, the ∆ that runs through the flood colours on hover, "The Human" instead of "About Me", cutting the greeting from the hero. What I got back were options and consequences. The choosing was the job.
+**Taste is not delegable.** Every real decision here was mine: paper over charcoal, the ■ that runs through the flood colours on hover, "The Human" instead of "About Me", cutting the greeting from the hero. What I got back were options and consequences. The choosing was the job.
 
 **It gets things wrong, confidently.** A folder called `untitled folder` got deleted as junk — it held the complete PP Neue Montreal family, eight weights and italics. Recovered from git, but a good reminder that "obviously disposable" is a judgement, and judgements can be wrong.
 

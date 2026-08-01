@@ -2,11 +2,15 @@
 import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
 
+/** Ongoing work sorts by its most recent year, matching the archive. */
+const shelf = (p: { data: { year: number; endYear?: number } }) =>
+  p.data.endYear ?? p.data.year;
+
 const all = (await getCollection("work", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.year - a.data.year
+  (a, b) => shelf(b) - shelf(a)
 );
 const featured = all.filter((p) => p.data.featured).slice(0, 4);
-const span = `${Math.min(...all.map((p) => p.data.year))}–${new Date().getFullYear()}`;
+const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.map(shelf))}`;
 ---
 
 <Base

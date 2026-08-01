@@ -31,7 +31,7 @@ const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.ma
           <h2 class="year label">{year}</h2>
           <ul>
             {all
-              .filter((p) => p.data.year === year)
+              .filter((p) => shelf(p) === year)
               .map((p) => (
                 <li>
                   <a href={`/work/${p.id}`}>

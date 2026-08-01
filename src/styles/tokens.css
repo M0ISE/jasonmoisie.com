@@ -19,6 +19,10 @@
   --flood-green: #1cd096;
   --flood-tan: #e0954a;
 
+  /* Not a flood — no page uses it as a ground. It exists so the nav mark
+     has a true orange between the red and the tan. */
+  --riso-orange: #f2691b;
+
   /* --- semantic: what components actually use --- */
   --ground: var(--paper);
   --ground-2: var(--paper-2);
