@@ -10,7 +10,9 @@ flood: green
 featured: true
 ---
 
-I built a Level 1 tech support bot for retail staff across Australia and Aotearoa. It lives in the chat tool they already have open, answers questions about the in-house retail systems, and knows when to stop guessing and hand the problem to a human.
+I work in Tech Services, supporting stores across Australia and Aotearoa. We aren't available around the clock. Stores are. B.O.T covers that gap.
+
+It's a Level 1 support bot that lives in the chat tool stores already have open, answers questions about the in-house retail systems, and knows when to stop guessing and escalate to a human.
 
 The interesting constraint wasn't technical. It was that **every person asking it a question is standing in front of a customer.**
 

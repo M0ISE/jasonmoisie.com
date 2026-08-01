@@ -1,14 +1,62 @@
 ---
 import Base from "../layouts/Base.astro";
 
+const experience = [
+  {
+    years: "2025 —",
+    role: "Operational Specialist, Tech Services",
+    place: "Lush, Australia & Aotearoa",
+    note: "Supporting stores across Australia and Aotearoa on the systems they run on — training, troubleshooting, and building the tooling that keeps a shop floor working when something breaks.",
+    projects: [
+      {
+        text: "Long-lead click and collect — localising the global system. Coordinating process and training across Digital Fulfilment, store teams and the UK dev team so it arrived working rather than arriving.",
+      },
+      {
+        text: "B.O.T — a support bot so stores can solve in-a-pinch tech issues when Tech Services isn't available.",
+        href: "/work/bot-ai-chat-helper",
+      },
+    ],
+  },
+  {
+    years: "2025",
+    role: "Assistant Manager",
+    place: "Lush Parramatta",
+    note: "Piloted a new point-of-service and stock management system for our region and the country, then ran troubleshooting and onboarding for the rest of the region. Led the team through a visual merchandising realignment, and moved ordering closer to what the store actually needed to cut waste.",
+  },
+  {
+    years: "2024 – 2025",
+    role: "Supervisor",
+    place: "Lush QVB",
+    note: "Onboarding and up-skilling the team, designing incentives against our targets, and building Power BI reports on customer trends — then using them to steer ordering, stock allocation, and to measure whether a merchandising change actually moved anything. Also ran the product-making workshops and parties.",
+  },
+  {
+    years: "2023 – 2024",
+    role: "Sales Assistant",
+    place: "Lush QVB",
+    note: "Consults, stock, payments and POS, opening and closing.",
+  },
+  {
+    years: "2022 – 2023",
+    role: "Evening Barista",
+    place: "The Organic Bread Bar",
+    note: "Coffee, bread and pastry service, close-down and cash-up, wholesale production sheets, and training new starters on the particulars of an evening shift.",
+  },
+  {
+    years: "2022",
+    role: "Barista & All-Rounder",
+    place: "Bluebottle Espresso, Manly",
+    note: "Front of house through weekend rushes — coffee, kitchen prep, POS.",
+  },
+];
+
 const education = [
   {
-    years: "2021–2023",
+    years: "2021 – 2023",
     award: "Master of Visualisation, Simulation & Immersive Design",
     place: "University of New South Wales",
   },
   {
-    years: "2017–2020",
+    years: "2017 – 2020",
     award: "Bachelor of Design Computing",
     place: "University of Sydney",
   },
@@ -20,8 +68,8 @@ const education = [
 ];
 
 const links = [
-  { label: "Email", href: "mailto:moisie@hey.com" },
-  { label: "Phone", href: "tel:+61449043843" },
+  { label: "Email", href: "mailto:jason.moisie@gmail.com" },
+  { label: "Phone", href: "tel:+61420288843" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/jasonmoisiadis/" },
   { label: "GitHub", href: "https://github.com/M0ISE" },
   { label: "Instagram", href: "https://www.instagram.com/jasonmoisie/" },
@@ -29,48 +77,78 @@ const links = [
 ---
 
 <Base
-  title="About — Jason Moisiadis"
-  description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling."
+  title="About Me — Jason Moisiadis"
+  description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling — currently building operational systems at Lush."
 >
   <section class="wrap">
-    <h1>So, about me <span aria-hidden="true">⛅</span></h1>
+    <h1>A bit about me <span aria-hidden="true">⛅</span></h1>
+
+    <div class="bio flow">
+      <p>
+        I'm an experience designer grounded in UX and service design. I like
+        opening a problem up properly — enough user research to find what's
+        actually driving it — before spending time building the wrong solution.
+      </p>
+      <p>
+        My immersive work has focused on experiences that aren't obsessively
+        reliant on screens and headsets, using sensemaking principles to work
+        across all of someone's senses rather than just their eyes. I'm
+        particularly interested in narrative design — how it builds levels
+        people come back to, and how it doubles as a tool for examining wicked
+        problems alongside modelling and simulation.
+      </p>
+      <p>
+        These days that lands somewhere less expected. At Lush I've piloted
+        point-of-sale and stock systems across the region, built training that
+        sticks, and automated the boring parts so the people on the floor can
+        get on with the actual work. It turns out “design a system humans can
+        live inside” is the same problem whether it's an immersive experience or
+        a Tuesday afternoon in retail.
+      </p>
+    </div>
 
     <div class="cols">
-      <div class="bio flow">
-        <p>
-          I'm an experience designer grounded in UX and service design. I like
-          opening a problem up properly — enough user research to find what's
-          actually driving it — before spending time building the wrong solution.
-        </p>
-        <p>
-          My immersive work has focused on experiences that aren't obsessively
-          reliant on screens and headsets. I'd rather use sensemaking principles
-          to work across all of someone's senses and cognitive processes to build
-          a deeper kind of immersion. I'm particularly interested in narrative
-          design: how it makes levels in games and immersive experiences that
-          people come back to, and how it doubles as a tool for examining wicked
-          problems — especially alongside modelling and simulation.
-        </p>
-        <p>
-          These days a lot of that lands somewhere less expected. At Lush I've
-          been piloting point-of-sale and stock systems across the region,
-          building training that sticks, and automating the boring parts so the
-          people on the floor can get on with the actual work. It turns out
-          “design a system humans can live inside” is the same problem whether
-          it's an immersive experience or a Tuesday afternoon in retail.
-        </p>
-        <p>
-          I like working in teams — taking everyone's strengths, weaknesses and
-          biases into account to build something that genuinely analyses and
-          solves problems together.
-        </p>
+      <div class="main">
+        <section class="block">
+          <h2 class="label">Experience ↓</h2>
+          <ul class="exp">
+            {
+              experience.map((e) => (
+                <li>
+                  <span class="e-years">{e.years}</span>
+                  <div>
+                    <h3 class="e-role">
+                      {e.role} <span class="e-place">— {e.place}</span>
+                    </h3>
+                    <p class="e-note">{e.note}</p>
+                    {
+                      e.projects && (
+                        <ul class="proj">
+                          {e.projects.map((p) => (
+                            <li>
+                              {p.href ? (
+                                <a href={p.href}>{p.text}</a>
+                              ) : (
+                                p.text
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )
+                    }
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
 
         <figure>
           <img
             src="/images/skills/skillSet023.png"
             alt="A mind map of Jason's skills, branching from Experience Design and Immersive Design into design thinking, user research, narrative design, sensemaking and prototyping."
-            width="1600"
-            height="900"
+            width="5245"
+            height="2667"
             loading="lazy"
           />
           <figcaption class="label">Roughly what's in the toolkit</figcaption>
@@ -78,7 +156,7 @@ const links = [
       </div>
 
       <aside class="side">
-        <section>
+        <section class="block">
           <h2 class="label">Let's chat ↓</h2>
           <ul class="links">
             {
@@ -91,15 +169,29 @@ const links = [
           </ul>
         </section>
 
-        <section>
+        <section class="block">
+          <h2 class="label">Photography ↓</h2>
+          <p class="side-note">
+            I take a lot of photos. They live on Instagram rather than here.
+          </p>
+          <ul class="links">
+            <li>
+              <a href="https://www.instagram.com/moisie.jpg/" rel="me noopener">
+                → @moisie.jpg ▨
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block">
           <h2 class="label">Education ↓</h2>
           <ul class="edu">
             {
               education.map((e) => (
                 <li>
                   <span class="e-years">{e.years}</span>
-                  <span class="e-award">{e.award}</span>
-                  <span class="e-place">{e.place}</span>
+                  <span class="ed-award">{e.award}</span>
+                  <span class="ed-place">{e.place}</span>
                 </li>
               ))
             }
@@ -119,27 +211,98 @@ const links = [
     border-bottom: 1.5px solid var(--fg);
   }
 
+  .bio {
+    font-size: var(--step-1);
+    max-width: var(--measure);
+    margin-block-start: clamp(1.8rem, 4vh, 2.6rem);
+  }
+  .bio p { text-wrap: pretty; }
+
   .cols {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(2.5rem, 6vw, 4.5rem);
-    margin-block-start: clamp(2rem, 5vh, 3rem);
+    gap: clamp(2.5rem, 6vw, 4rem);
+    margin-block-start: clamp(2.5rem, 7vh, 4rem);
   }
   @media (min-width: 900px) {
-    .cols { grid-template-columns: minmax(0, 1.6fr) minmax(230px, .9fr); }
+    .cols { grid-template-columns: minmax(0, 1.7fr) minmax(220px, .8fr); }
   }
 
-  .bio { font-size: var(--step-1); max-width: var(--measure); }
-  .bio p { text-wrap: pretty; }
-
-  figure { margin: 2.5rem 0 0; }
-  figure img { border: 1.5px solid var(--rule); }
-  figcaption { margin-block-start: .6rem; }
-
-  .side { display: flex; flex-direction: column; gap: 2.5rem; }
-  .side h2 { padding-block-end: .5rem; border-bottom: 1px solid var(--rule); }
+  .block + .block { margin-block-start: 2.6rem; }
+  .block h2 { padding-block-end: .5rem; border-bottom: 1px solid var(--rule); }
 
   ul { list-style: none; margin: 0; padding: 0; }
+
+  /* --- experience --- */
+  .exp { margin-block-start: .4rem; }
+  /* direct children only — nested project lists must not inherit the
+     two-column role layout or the dividing rules */
+  .exp > li {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .35rem;
+    padding-block: 1.3rem;
+  }
+  .exp > li + li { border-top: 1px solid var(--rule); }
+  @media (min-width: 620px) {
+    .exp > li { grid-template-columns: 8.5rem 1fr; gap: 1.2rem; }
+  }
+
+  .e-years {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .12em;
+    color: var(--fg-soft);
+    padding-block-start: .3em;
+    white-space: nowrap;
+  }
+
+  .e-role {
+    font-size: var(--step-1);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.015em;
+  }
+  .e-place { font-weight: 400; color: var(--fg-soft); }
+
+  .e-note {
+    margin-block-start: .45rem;
+    color: var(--fg-soft);
+    max-width: 58ch;
+    text-wrap: pretty;
+  }
+
+  /* named projects under a role — the things worth pointing at */
+  .proj {
+    margin-block-start: .9rem;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    max-width: 58ch;
+  }
+  .proj li {
+    position: relative;
+    padding-inline-start: 1.1rem;
+    font-size: var(--step--1);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+  .proj li::before {
+    content: "♦";
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--accent);
+  }
+
+  /* --- sidebar --- */
+  .side { display: flex; flex-direction: column; }
+
+  .side-note {
+    margin-block-start: .8rem;
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+    text-wrap: pretty;
+  }
 
   .links { margin-block-start: .9rem; display: flex; flex-direction: column; gap: .45rem; }
   .links a {
@@ -152,12 +315,11 @@ const links = [
 
   .edu { margin-block-start: 1.1rem; display: flex; flex-direction: column; gap: 1.3rem; }
   .edu li { display: flex; flex-direction: column; gap: .15rem; }
-  .e-years {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: .12em;
-    color: var(--fg-soft);
-  }
-  .e-award { font-weight: 700; line-height: 1.25; }
-  .e-place { font-size: var(--step--1); color: var(--fg-soft); }
+  .ed-award { font-weight: 700; line-height: 1.25; }
+  .ed-place { font-size: var(--step--1); color: var(--fg-soft); }
+
+  /* --- skills map --- */
+  figure { margin: clamp(2.5rem, 6vh, 3.5rem) 0 0; }
+  figure img { border: 1.5px solid var(--rule); }
+  figcaption { margin-block-start: .6rem; }
 </style>
