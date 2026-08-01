@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- The Basics -->
+  <meta charset="utf-8" />
+  <title>Modelling Methods to decrease HIV
+    infections within Australia</title>
+  <meta name="description" content="An modelling experiment" />
+  <meta name="author" content="Jason Moisiadis" />
+
+  <!-- Dark/ Light Mode -->
+  <meta name="theme-color" content="#F4F0EA" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1A1A1A" media="(prefers-color-scheme: dark)" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/skeleton.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="java.js"></script> -->
+  <script src="content/PrEP_Content.js"></script>
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="resources/favicon.png" />
+
+  <!-- Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jason Moisiadis" />
+  <meta property="og:title" content="Would a 100% subsidy of PrEP solve HIV in Australia? — Jason Moisiadis" />
+  <meta property="og:description" content="A modelling experiment on HIV prevention and PrEP uptake in Australia." />
+  <meta property="og:url" content="https://jasonmoisie.com/modelingPrEPsubsidy.html" />
+  <meta property="og:image" content="https://jasonmoisie.com/resources/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+</head>
+
+<!-- Now the Content, Because we all know Content is King -->
+
+<body id="pageEvent">
+  <!-- nar bar -->
+  <div class="container">
+    <div id="nav" class="twelve columns">
+      <ul>
+        <li>
+          <!-- Light Mode Logo -->
+          <a href="/index.html"><img class="NavLogo lightSwitch" src="resources/nav-green.png"
+              alt="Jason Moisiadis — home" /></a>
+        </li>
+        <li>
+          <!-- Dark Mode Logo -->
+          <a href="/index.html"><img class="NavLogo darkSwitch" src="resources/nav-purple.png"
+              alt="" aria-hidden="true" /></a>
+        </li>
+        <li>
+          <h3 class="navTilda">&nbsp </h3>
+        </li>
+        <li>
+          <!-- Link to my Work Page -->
+          <a class="navLinks" href="/work.html">Work ✨</a>
+        </li>
+        <li>
+          <h3 class="navTilda">&nbsp &nbsp</h3>
+        </li>
+        <li>
+          <!-- Link to my Photography Page -->
+          <a class="navLinks" href="https://www.instagram.com/moisie.jpg/">Photography ▨</a>
+        </li>
+        <li>
+          <h3 class="navTilda">&nbsp &nbsp</h3>
+        </li>
+        <li>
+          <!-- Link to my About Page -->
+          <a class="navLinks" href="/about.html">About ☕</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Welcome text -->
+  <div class="container">
+    <div class="twelve columns">
+      <p class="themeColorBodyText heroTextWork">
+        Modelling Methods to decrease HIV
+        infections within Australia
+      </p>
+      <p class="themeColorBodyText heroTextWorkSubTitle">
+        —An modelling experiment
+      </p>
+    </div>
+    <div class="twelve columns">
+      <p class="themeColorBodyText bodyContent littlePadding">
+        As part of our core subjects at UNSW, we needed to investigate a problem and then model different solutions to
+        said
+        problem. I had recently been doing some research into PrEP for personal use and found myself wondering why don't
+        we just
+        fully subsidise it? The Pharmaceutical Benefits Scheme already covers something like 98% of the cost, why not go
+        the
+        rest of the way. This lead me down the path of creating the model and discovering the complexities involved in
+        HIV
+        transmission even without factoring in PrEP or other forms of protection.
+        <br><br>
+        Hit the buttons below to have a look through, and have a play with my model
+    </div>
+  </div>
+
+  <!-- Hide/ Show Content Button   -->
+  <div class="container">
+    <div class="twelve columns">
+
+      <!-- Controls Embedded Visablity  -->
+      <button id="showButtonEmbedded" class="showButtonEmbedded">
+        Embedded Model
+      </button>
+      <button id="hideButtonEmbedded" style="display: none;" class="hideButtonEmbedded">
+        Embedded Model
+      </button>
+
+      <!-- Controls Results Visablity   -->
+      <!--<button id="showButtonResults" class="showButtonResults">
+        ♦ Modeling Results ·
+      </button>
+      <button id="hideButtonResults" style="display: none;" class="hideButtonResults">
+        ◊ Modeling Results ·
+      </button>-->
+
+      <!-- Controls Paper Visablity   -->
+      <button id="showButtonPaper" class="showButtonPaper">
+        Full Paper
+      </button>
+      <button id="hideButtonPaper" style="display: none;" class="hideButtonPaper">
+        Full Paper
+      </button>
+
+      <!-- Controls PDF Text   -->
+      <a href="/resources/PDF/PrEP.pdf">
+        <button id="showButtonPDF" class="showButtonPDF">
+          PDF Version
+        </button>
+      </a>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="container">
+    <div id="blankSpacePrEP" class="blankSpace">
+      <p>
+        &nbsp
+      </p>
+    </div>
+  </div>
+
+  <!-- Embedded Model I Frame   -->
+  <div id="modellingIFrame">
+
+    <!-- Section tittle  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitle">· the model ·</p>
+      </div>
+    </div>
+
+    <!-- Model I Frame   -->
+    <div class="container">
+      <div class="twelve columns">
+
+        <IFRAME SRC="//InsightMaker.com/insight/6YF7DUUH7MrOkhkWTIaapN/embed?topBar=1&sideBar=1&zoom=1"
+          TITLE="Embedded Insight" width=100% height=900></IFRAME>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="resultGraphsContainer">
+    <!-- Page Subtitle  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p id="colorSampler" class="themeColorBodyText gentileSubtitle">· The Graphs ·</p>
+      </div>
+    </div>
+
+    <!-- Page text Content  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText bodyContent">
+
+          Human immunodeficiency virus (HIV) is a disease that we have no cure for as of yet. Without treatment, a
+          person with HIV
+          will eventually develop acquired immunodeficiency syndrome (AIDS) and again without treatment, they’ll
+          typically survive
+          three years. In the past, people with HIV and AIDS have been highly stigmatised in our society, with a lack of
+          general
+          understanding of how HIV is transmitted and treated. With the demonification of these people who were infected
+          with the
+          disease stalling progress on treatment for many years. With lasting cultural touchstones such as the
+          Australian Grim
+          Reaper AIDS Campaign (1987), there is a risk that the public’s sense of the state of treatment could be suck
+          in the
+          eighties, leaving a false perception about the state of treatment for persons with HIV or AIDS.
+
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="paperTextPageContainer">
+    <!-- Page Subtitle  -->
+
+    <!-- Section Subtitle  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p id="colorSampler" class="themeColorBodyText gentileSubtitle">· The Paper ·</p>
+      </div>
+    </div>
+
+    <!-- The Problem  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p id="colorSampler" class="themeColorBodyText gentileSubtitleSmall">Problem Outline:</p>
+        <p id="TheProblem" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- The Question  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">The Question:</p>
+        <p id="TheQuestion" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- Why This Question?  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">Why this Question?</p>
+        <p id="WhyThisQuestion" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- State of the Art  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">State of the Art:</p>
+        <p id="StateOfTheArt" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- Proposed Approach A  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">Proposed Approach:</p>
+        <p id="ProposedApproachA" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- Insight Maker Model  -->
+    <div class="container">
+      <div class="twelve columns">
+        <img class="contentGrid5x" src="images/prep/modelOverView.png" alt="PrEp Model Overview" />
+        <p class="contentGrid5x">
+          Model Constructed with Insight Maker
+        </p>
+      </div>
+    </div>
+
+    <!-- Proposed Approach B  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p id="ProposedApproachB" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- Discussion Start  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">Discussion:</p>
+        <p id="Discussion" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion A  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DA.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Persons infected by month 300 at 10% Inaffordability
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionA" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion B  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DB.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Persons infected by month 450 at 10% Inaffordability
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionB" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion C  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DC.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Persons infected by month 750 at 90% Inaffordability
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionC" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion D  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DD1.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Persons infected by month 750 at 10% Inaffordability
+        </p>
+        <img class="contentGrid5x" src="images/prep/DD2.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          10% Inaffordability simmulated out to over 70,00 months
+        </p>
+        <img class="contentGrid5x" src="images/prep/DD3.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Rate of infection with 10% Inaffordability
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionD" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion E  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DE1.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Cost of Care at 750 months with 10% Inaffordability
+        </p>
+        <img class="contentGrid5x" src="images/prep/DE2.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Cost of Care at 750 months with 90% Inaffordability
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionE" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion F  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DF.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Population with 40% Inaffordability at 750 Months
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionF" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+    <!-- Discussion G  -->
+    <div class="container">
+      <div class="four columns">
+        <img class="contentGrid5x" src="images/prep/DG1.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Population with 40% Inaffordability at 750 Months with subsided Condoms
+        </p>
+        <img class="contentGrid5x" src="images/prep/DG2.png" alt="Jason Moise Logo Light Theme" />
+        <p class="contentGrid5x">
+          Comparing 40% Inaffordability at 1429 Months with and without subsided Condoms
+        </p>
+      </div>
+      <div class="eight columns">
+        <p id="DiscussionG" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- Conclusion  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">Conclusion:</p>
+        <p id="Conclusion" class="themeColorBodyText bodyContent"></p>
+      </div>
+    </div>
+
+    <!-- Refences  -->
+    <div class="container">
+      <div class="twelve columns">
+        <p class="themeColorBodyText gentileSubtitleSmall">Refences:</p>
+        <p id="PrEPRefences" class="themeColorBodyText bodyContentSmall"></p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+<footer>
+  <div class="container">
+    <div class="twelve columns">
+      <p class="copyRightFooter themeColorBodyText">
+        © Jason Moisiadis 2022
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- THE END –– -->
+
+</html>

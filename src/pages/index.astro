@@ -1,0 +1,139 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const all = (await getCollection("work", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.year - a.data.year
+);
+const featured = all.filter((p) => p.data.featured).slice(0, 4);
+const span = `${Math.min(...all.map((p) => p.data.year))}–${new Date().getFullYear()}`;
+---
+
+<Base
+  title="Jason Moisiadis — work &amp; writing"
+  description="An archive of work, essays and experiments by Jason Moisiadis. Immersive experience designer, Sydney."
+>
+  <section class="wrap hero">
+    <h1 class="pixel">Turning messy&nbsp;problems into calm,&nbsp;working systems</h1>
+
+    <p class="intro">
+      👋 I'm Jason (they/he). Right now that's at Lush in Sydney — training,
+      troubleshooting, and building things that hold up on a shop floor. Before
+      that, a Masters in Visualisation, Simulation &amp; Immersive Design at UNSW.
+    </p>
+
+    <p class="intro">
+      This is the archive: essays, experiments and things I've made.
+    </p>
+  </section>
+
+  <section class="wrap featured">
+    <div class="sec-head">
+      <h2 class="label">Some things I've made</h2>
+      <a class="all" href="/work">All {all.length} pieces, {span} →</a>
+    </div>
+
+    <ul class="cards">
+      {
+        featured.map((p) => (
+          <li>
+            <a href={`/work/${p.id}`} data-flood={p.data.flood} class="card">
+              <span class="c-type">{p.data.type}</span>
+              <span class="c-title">{p.data.title}</span>
+              <span class="c-meta">
+                {p.data.source} · {p.data.endYear ? `${p.data.year}–${p.data.endYear}` : p.data.year}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block-end: clamp(3rem, 12vh, 7rem); }
+
+  h1 {
+    font-size: var(--step-4);
+    line-height: .9;
+    max-width: 16ch;
+    letter-spacing: 0;
+  }
+
+  .intro {
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    margin-block-start: 1.6rem;
+    text-wrap: pretty;
+  }
+
+  .sec-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block-end: 1rem;
+    border-bottom: 1.5px solid var(--fg);
+  }
+
+  .all {
+    font-family: var(--font-pixel);
+    font-size: var(--step-0);
+    text-decoration: none;
+  }
+  .all:hover { text-decoration: underline; }
+
+  .cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--fg);
+    border: 1.5px solid var(--fg);
+    border-block-start: 0;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    min-height: 230px;
+    padding: 1.3rem 1.2rem;
+    text-decoration: none;
+    background: var(--ground);
+    color: var(--fg);
+    transition: filter .25s ease;
+  }
+  .card:hover { filter: brightness(1.08) saturate(1.1); }
+
+  .c-type {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    opacity: .8;
+  }
+
+  .c-title {
+    font-size: var(--step-2);
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.025em;
+    text-transform: uppercase;
+    margin-block-start: auto;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+
+  .c-meta {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .1em;
+    opacity: .8;
+  }
+</style>

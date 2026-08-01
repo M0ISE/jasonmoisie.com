@@ -1,0 +1,120 @@
+/* ---------------------------------------------------------------
+   Design tokens — ink on paper
+   Components style through the semantic tokens (--ground, --fg, …)
+   and never reference a raw palette value directly. That's what
+   makes a flood page a one-attribute change.
+   --------------------------------------------------------------- */
+
+:root {
+  /* --- palette: grounds --- */
+  --paper: #efe7d7;
+  --paper-2: #e4dac6;
+  --ink: #1e1b18;
+  --ink-2: #17150f;
+
+  /* --- palette: floods --- */
+  --flood-blue: #2b35c4;
+  --flood-red: #f02a32;
+  --flood-purple: #7d5bb2;
+  --flood-green: #1cd096;
+  --flood-tan: #e0954a;
+
+  /* --- semantic: what components actually use --- */
+  --ground: var(--paper);
+  --ground-2: var(--paper-2);
+  --fg: var(--ink);
+  --fg-soft: #6b6259;
+  --rule: #cbbfa8;
+  --accent: var(--flood-purple);
+
+  /* --- type --- */
+  --font-pixel: "PP Mondwest", ui-serif, Georgia, serif;
+  --font-body: "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3.4rem);
+  --step-4: clamp(2.6rem, 1.8rem + 4vw, 5.6rem);
+
+  /* --- space + layout --- */
+  --pad: clamp(1.25rem, 4vw, 4rem);
+  --measure: 66ch;
+  --gutter: clamp(1.5rem, 3vw, 3rem);
+  --wrap: 1180px;
+}
+
+/* --- dark: the ink ground. Floods are self-contained and unchanged. --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: var(--ink-2);
+    --ground-2: #221f18;
+    --fg: var(--paper);
+    --fg-soft: #a2988a;
+    --rule: #3d382e;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: var(--ink-2);
+  --ground-2: #221f18;
+  --fg: var(--paper);
+  --fg-soft: #a2988a;
+  --rule: #3d382e;
+}
+
+:root[data-theme="light"] {
+  --ground: var(--paper);
+  --ground-2: var(--paper-2);
+  --fg: var(--ink);
+  --fg-soft: #6b6259;
+  --rule: #cbbfa8;
+}
+
+/* ---------------------------------------------------------------
+   Floods — one attribute repaints the page.
+   Each flood carries its own paired foreground, so it reads the
+   same in light and dark. This is the whole point of the system.
+   --------------------------------------------------------------- */
+
+[data-flood] {
+  --ground-2: color-mix(in srgb, var(--ground) 88%, #000);
+  --accent: var(--fg);
+}
+
+[data-flood="blue"] {
+  --ground: var(--flood-blue);
+  --fg: var(--paper);
+  --fg-soft: color-mix(in srgb, var(--paper) 72%, transparent);
+  --rule: color-mix(in srgb, var(--paper) 30%, transparent);
+}
+
+[data-flood="red"] {
+  --ground: var(--flood-red);
+  --fg: var(--paper);
+  --fg-soft: color-mix(in srgb, var(--paper) 76%, transparent);
+  --rule: color-mix(in srgb, var(--paper) 32%, transparent);
+}
+
+[data-flood="purple"] {
+  --ground: var(--flood-purple);
+  --fg: var(--paper);
+  --fg-soft: color-mix(in srgb, var(--paper) 74%, transparent);
+  --rule: color-mix(in srgb, var(--paper) 30%, transparent);
+}
+
+[data-flood="green"] {
+  --ground: var(--flood-green);
+  --fg: var(--ink);
+  --fg-soft: color-mix(in srgb, var(--ink) 80%, transparent);
+  --rule: color-mix(in srgb, var(--ink) 26%, transparent);
+}
+
+[data-flood="tan"] {
+  --ground: var(--flood-tan);
+  --fg: var(--ink);
+  --fg-soft: color-mix(in srgb, var(--ink) 80%, transparent);
+  --rule: color-mix(in srgb, var(--ink) 26%, transparent);
+}

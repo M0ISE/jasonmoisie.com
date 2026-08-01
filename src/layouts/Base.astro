@@ -1,0 +1,82 @@
+---
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Repaints the whole page. Omit for the default paper ground. */
+  flood?: "blue" | "red" | "purple" | "green" | "tan";
+}
+
+const { title, description, flood } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/brand/og-card.png", Astro.site);
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="theme-color" content="#efe7d7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jason Moisiadis" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="/brand/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link
+      rel="preload"
+      href="/fonts/PPMondwest-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/PPNeueMontreal-Book.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+
+  <body data-flood={flood}>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="wrap">
+      <Nav />
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="wrap">
+      <p class="label">© Jason Moisiadis {year} · Sydney</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  header { padding-bottom: clamp(2.5rem, 8vh, 5rem); }
+
+  footer {
+    padding-block: clamp(3rem, 8vh, 5rem) 3rem;
+    margin-block-start: clamp(3rem, 10vh, 7rem);
+    border-top: 1px solid var(--rule);
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import Base from "./Base.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const dateline = d.endYear ? `${d.year}–${d.endYear}` : `${d.year}`;
+---
+
+<Base title={`${d.title} — Jason Moisiadis`} description={d.summary} flood={d.flood}>
+  <article class="wrap">
+    <header class="piece-head">
+      <p class="label">{d.type} · {d.source} · {dateline}</p>
+      <h1>{d.title}</h1>
+      {d.subtitle && <p class="subtitle">{d.subtitle}</p>}
+      <p class="summary">{d.summary}</p>
+
+      {
+        d.pdf && (
+          <p class="pdf">
+            <a href={`/pdf/${d.pdf}`}>♦ PDF version</a>
+          </p>
+        )
+      }
+    </header>
+
+    <div class="body flow">
+      <slot />
+    </div>
+
+    <p class="back"><a href="/work">← Back to the archive</a></p>
+  </article>
+</Base>
+
+<style>
+  .piece-head {
+    padding-block-end: clamp(2rem, 6vh, 3.5rem);
+    margin-block-end: clamp(2rem, 6vh, 3.5rem);
+    border-bottom: 1.5px solid var(--rule);
+  }
+
+  h1 {
+    font-size: var(--step-4);
+    text-transform: uppercase;
+    letter-spacing: -.035em;
+    margin-block: .5rem 0;
+  }
+
+  .subtitle {
+    font-family: var(--font-pixel);
+    font-size: var(--step-2);
+    margin-block-start: .6rem;
+  }
+
+  .summary {
+    margin-block-start: 1.4rem;
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    color: var(--fg-soft);
+    text-wrap: pretty;
+  }
+
+  .pdf { margin-block-start: 1.6rem; }
+  .pdf a {
+    font-family: var(--font-pixel);
+    font-size: var(--step-1);
+    text-decoration: none;
+    border: 1.5px solid var(--fg);
+    padding: .35rem .9rem;
+    display: inline-block;
+  }
+  .pdf a:hover { background: var(--fg); color: var(--ground); }
+
+  .body { max-width: var(--measure); font-size: var(--step-1); }
+
+  .body :global(h2) {
+    font-size: var(--step-2);
+    text-transform: uppercase;
+    margin-block-start: 2.4em;
+    letter-spacing: -.025em;
+  }
+  .body :global(h3) { font-size: var(--step-1); margin-block-start: 2em; }
+  .body :global(p) { text-wrap: pretty; }
+  .body :global(ul) { padding-inline-start: 1.15rem; }
+  .body :global(li + li) { margin-block-start: .5rem; }
+  .body :global(strong) { font-weight: 700; }
+  .body :global(hr) { margin-block: 2.5rem; }
+  .body :global(em) { font-style: italic; }
+
+  .back {
+    margin-block-start: clamp(3rem, 8vh, 5rem);
+    font-family: var(--font-pixel);
+    font-size: var(--step-1);
+  }
+</style>

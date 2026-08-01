@@ -1,0 +1,163 @@
+---
+import Base from "../layouts/Base.astro";
+
+const education = [
+  {
+    years: "2021–2023",
+    award: "Master of Visualisation, Simulation & Immersive Design",
+    place: "University of New South Wales",
+  },
+  {
+    years: "2017–2020",
+    award: "Bachelor of Design Computing",
+    place: "University of Sydney",
+  },
+  {
+    years: "2016",
+    award: "Bachelor of Electrical Engineering & Nanotechnology",
+    place: "University of Technology Sydney",
+  },
+];
+
+const links = [
+  { label: "Email", href: "mailto:moisie@hey.com" },
+  { label: "Phone", href: "tel:+61449043843" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/jasonmoisiadis/" },
+  { label: "GitHub", href: "https://github.com/M0ISE" },
+  { label: "Instagram", href: "https://www.instagram.com/jasonmoisie/" },
+];
+---
+
+<Base
+  title="About — Jason Moisiadis"
+  description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling."
+>
+  <section class="wrap">
+    <h1>So, about me <span aria-hidden="true">⛅</span></h1>
+
+    <div class="cols">
+      <div class="bio flow">
+        <p>
+          I'm an experience designer grounded in UX and service design. I like
+          opening a problem up properly — enough user research to find what's
+          actually driving it — before spending time building the wrong solution.
+        </p>
+        <p>
+          My immersive work has focused on experiences that aren't obsessively
+          reliant on screens and headsets. I'd rather use sensemaking principles
+          to work across all of someone's senses and cognitive processes to build
+          a deeper kind of immersion. I'm particularly interested in narrative
+          design: how it makes levels in games and immersive experiences that
+          people come back to, and how it doubles as a tool for examining wicked
+          problems — especially alongside modelling and simulation.
+        </p>
+        <p>
+          These days a lot of that lands somewhere less expected. At Lush I've
+          been piloting point-of-sale and stock systems across the region,
+          building training that sticks, and automating the boring parts so the
+          people on the floor can get on with the actual work. It turns out
+          “design a system humans can live inside” is the same problem whether
+          it's an immersive experience or a Tuesday afternoon in retail.
+        </p>
+        <p>
+          I like working in teams — taking everyone's strengths, weaknesses and
+          biases into account to build something that genuinely analyses and
+          solves problems together.
+        </p>
+
+        <figure>
+          <img
+            src="/images/skills/skillSet023.png"
+            alt="A mind map of Jason's skills, branching from Experience Design and Immersive Design into design thinking, user research, narrative design, sensemaking and prototyping."
+            width="1600"
+            height="900"
+            loading="lazy"
+          />
+          <figcaption class="label">Roughly what's in the toolkit</figcaption>
+        </figure>
+      </div>
+
+      <aside class="side">
+        <section>
+          <h2 class="label">Let's chat ↓</h2>
+          <ul class="links">
+            {
+              links.map((l) => (
+                <li>
+                  <a href={l.href}>→ {l.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="label">Education ↓</h2>
+          <ul class="edu">
+            {
+              education.map((e) => (
+                <li>
+                  <span class="e-years">{e.years}</span>
+                  <span class="e-award">{e.award}</span>
+                  <span class="e-place">{e.place}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 {
+    font-size: var(--step-3);
+    text-transform: uppercase;
+    letter-spacing: -.03em;
+    padding-block-end: 1rem;
+    border-bottom: 1.5px solid var(--fg);
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 6vw, 4.5rem);
+    margin-block-start: clamp(2rem, 5vh, 3rem);
+  }
+  @media (min-width: 900px) {
+    .cols { grid-template-columns: minmax(0, 1.6fr) minmax(230px, .9fr); }
+  }
+
+  .bio { font-size: var(--step-1); max-width: var(--measure); }
+  .bio p { text-wrap: pretty; }
+
+  figure { margin: 2.5rem 0 0; }
+  figure img { border: 1.5px solid var(--rule); }
+  figcaption { margin-block-start: .6rem; }
+
+  .side { display: flex; flex-direction: column; gap: 2.5rem; }
+  .side h2 { padding-block-end: .5rem; border-bottom: 1px solid var(--rule); }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+
+  .links { margin-block-start: .9rem; display: flex; flex-direction: column; gap: .45rem; }
+  .links a {
+    font-family: var(--font-pixel);
+    font-size: var(--step-1);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .links a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+
+  .edu { margin-block-start: 1.1rem; display: flex; flex-direction: column; gap: 1.3rem; }
+  .edu li { display: flex; flex-direction: column; gap: .15rem; }
+  .e-years {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .12em;
+    color: var(--fg-soft);
+  }
+  .e-award { font-weight: 700; line-height: 1.25; }
+  .e-place { font-size: var(--step--1); color: var(--fg-soft); }
+</style>
