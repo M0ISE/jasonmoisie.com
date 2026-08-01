@@ -10,12 +10,16 @@ flood: green
 featured: true
 pinned: 2
 authorship: ai-original
-authorshipNote: "Drafted by Claude from the repo. Jason supplied the Tech Services framing and drew the line on what could not be published."
+authorshipNote: "Drafted by Claude from the repo. The origin, the Google Chat Spaces reasoning and the privacy boundary are Jason's account, given verbatim in conversation and rewritten to fit the page."
 ---
 
-I work in Tech Services, supporting stores across Australia and Aotearoa. We aren't available around the clock. Stores are. B.O.T covers that gap.
+The idea had been floating around my team for a while. A couple of iterations, some exploration, nothing that ever landed as something a store team could actually pick up and use.
 
-It's a Level 1 support bot that lives in the chat tool stores already have open, answers questions about the in-house retail systems, and knows when to stop guessing and escalate to a human.
+Then I had leave coming up.
+
+Retail support is the part of Tech Services I lead on. My team would have covered it fine while I was gone — but I wanted to be considerate about workload and capacity rather than just handing it over. So I spent a few weekends collecting the documentation, running it through the scripts that turn it into something a model can work with, and put the whole thing together.
+
+B.O.T is a Level 1 support bot for store teams. It answers questions about the in-house retail systems and knows when to stop guessing and escalate to a human.
 
 The interesting constraint wasn't technical. It was that **every person asking it a question is standing in front of a customer.**
 
@@ -24,6 +28,16 @@ The interesting constraint wasn't technical. It was that **every person asking i
 Support documentation is usually written for someone sitting down. The reader has time, both hands, and the patience to scroll. None of that is true on a shop floor at midday. The person asking has a queue behind them, a till that won't do the thing, and about thirty seconds before the situation becomes social.
 
 That reframed the whole build. The bot's first job isn't to be correct — it's to be *fast enough to be worth asking*. So it leads with the workaround that clears the queue, and only then explains the actual fault. If something is trade-impacting, that ordering is non-negotiable.
+
+## Where it lives is the whole idea
+
+The default build is a standalone app, or a Gemini Gem people open when they need it. I did neither, and that's the part I'd point at rather than anything in the model.
+
+B.O.T lives in **Google Chat Spaces** — the tool store teams already have open on the floor, all day, for every other reason.
+
+That removes an entire step. No app to install, no link to hunt for, no separate thing to remember exists at the exact moment your till has stopped working. You ask in the place you were already going to ask a human, and an answer comes back.
+
+The distance between someone having a problem and someone having an answer is the only number that matters here. Every extra step is somewhere a person gives up and just deals with it, or waits until Tech Services is back online. Putting the bot where the conversation already happens shrinks that distance to about as small as it goes.
 
 ## The retrieval decision
 
