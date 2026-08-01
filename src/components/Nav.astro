@@ -53,11 +53,38 @@ const isAbout = pathname.startsWith("/about");
   .home:focus-visible,
   .home[aria-current="page"] { text-decoration: none; }
 
-  .glyph::before { content: "□"; }
+  .glyph::before {
+    content: "∆";
+    display: inline-block;
+  }
 
+  /* On hover the mark runs through the archive's flood colours — the same
+     five that paint the work pages. */
   .home:hover .glyph::before,
-  .home:focus-visible .glyph::before { content: "▧"; }
+  .home:focus-visible .glyph::before {
+    background: linear-gradient(
+      90deg,
+      var(--flood-blue),
+      var(--flood-red),
+      var(--flood-purple),
+      var(--flood-green),
+      var(--flood-tan),
+      var(--flood-blue)
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: flood-cycle .7s linear infinite;
+  }
 
-  /* on the homepage itself the mark is already "here" */
-  .home[aria-current="page"] .glyph::before { content: "▧"; }
+  @keyframes flood-cycle {
+    from { background-position: 0 0; }
+    to { background-position: -300% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home:hover .glyph::before,
+    .home:focus-visible .glyph::before { animation: none; }
+  }
 </style>
