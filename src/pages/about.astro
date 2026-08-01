@@ -9,9 +9,11 @@ const experience = [
     note: "Supporting stores across Australia and Aotearoa on the systems they run on — training, troubleshooting, and building the tooling that keeps a shop floor working when something breaks.",
     projects: [
       {
+        year: "2026",
         text: "Long-lead click and collect — localising the global system. Coordinating process and training across Digital Fulfilment, store teams and the UK dev team so it arrived working rather than arriving.",
       },
       {
+        year: "2026",
         text: "B.O.T — a support bot so stores can solve in-a-pinch tech issues when Tech Services isn't available.",
         href: "/work/bot-ai-chat-helper",
       },
@@ -127,6 +129,7 @@ const links = [
                         <ul class="proj">
                           {e.projects.map((p) => (
                             <li>
+                              {p.year && <span class="p-year">{p.year}</span>}
                               {p.href ? (
                                 <a href={p.href}>{p.text}</a>
                               ) : (
@@ -293,6 +296,13 @@ const links = [
     position: absolute;
     inset-inline-start: 0;
     color: var(--accent);
+  }
+
+  .p-year {
+    font-family: var(--font-mono);
+    letter-spacing: .1em;
+    color: var(--fg-soft);
+    margin-inline-end: .5em;
   }
 
   /* --- sidebar --- */

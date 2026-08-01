@@ -2,13 +2,17 @@
 import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
 
+/** Ongoing work belongs to its most recent year, not the year it started. */
+const shelf = (p: { data: { year: number; endYear?: number } }) =>
+  p.data.endYear ?? p.data.year;
+
 const all = (await getCollection("work", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title)
+  (a, b) => shelf(b) - shelf(a) || a.data.title.localeCompare(b.data.title)
 );
 
 // group by year, newest first — the archive reads as a timeline
-const years = [...new Set(all.map((p) => p.data.year))].sort((a, b) => b - a);
-const span = `${Math.min(...all.map((p) => p.data.year))}–${new Date().getFullYear()}`;
+const years = [...new Set(all.map(shelf))].sort((a, b) => b - a);
+const span = `${Math.min(...all.map((p) => p.data.year))}–${Math.max(...all.map(shelf))}`;
 ---
 
 <Base
