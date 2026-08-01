@@ -16,7 +16,7 @@ The folio I put together at the end of the Masters. It's a container rather than
 
 What's in it:
 
-- **A professional bio and skills map.** The map is also on [the about page](/about); it branches from experience design and immersive design out into design thinking, user research, narrative design, sensemaking and prototyping.
+- **A professional bio and skills map.** The map branches from experience design and immersive design out into design thinking, user research, narrative design, sensemaking and prototyping. It's a 2023 snapshot and it hasn't aged well, which is why it lives in here rather than on the about page.
 - **The HIV and PrEP work** — see [the wicked problem of HIV prevention](/work/wicked-problem-hiv) and [the PrEP subsidy model](/work/prep-subsidy-model).
 - **The *sun stealer* narrative arch** — the full game design document is [here](/work/sun-stealer).
 - **An excerpt from *superposition \\ true ch'ien*** — the whole essay is [here](/work/superposition).
