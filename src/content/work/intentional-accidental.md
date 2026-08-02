@@ -9,7 +9,7 @@ source: UNSW
 flood: tan
 pdf: majorProject.pdf
 featured: true
-pinned: 5
+pinned: 6
 authorship: ai-from-source
 authorshipNote: "Claude's prose, from Jason's 2022 process documentation."
 ---

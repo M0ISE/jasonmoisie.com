@@ -1,12 +1,14 @@
 ---
 title: "Connecting People & Places"
 subtitle: "An AR scavenger hunt for SIGGRAPH Asia 2023"
-summary: "A location-based AR game for conference delegates, and a peer-reviewed paper on telling cultural heritage stories in the gap between digital and physical."
+summary: "A location-based AR game for conference delegates, and a paper submitted to SIGGRAPH Asia on telling cultural heritage stories in the gap between digital and physical."
 year: 2023
 month: 11
 type: project
 source: UNSW × ACM SIGGRAPH
 flood: blue
+featured: true
+pinned: 3
 authorship: ai-from-source
 authorshipNote: "Claude's prose, from the SIGGRAPH paper, the outcome presentation and Jason's professional reflection."
 ---
@@ -24,7 +26,9 @@ It had to do two jobs at once: be a real thing conference-goers would actually u
 <figcaption>The poster submission. Wallace, Moisiadis, Kyriakaki & Kim, ACM, 2023.</figcaption>
 </figure>
 
-**Connecting People & Places through immersive storytelling.** Anthony Wallace, Jason Moisiadis, Danae-Irene Kyriakaki and June Kim. In *Proceedings of SIGGRAPH Asia '23*, ACM, 2 pages.
+**Connecting People & Places through immersive storytelling.** Anthony Wallace, Jason Moisiadis, Danae-Irene Kyriakaki and June Kim. Poster submission to SIGGRAPH Asia '23, Sydney, 12–15 December 2023.
+
+We took it through the full submission process. It wasn't accepted, so it was never published — the ACM reference on the page still carries the unfilled template placeholders, `978-x-xxxx-xxxx-x` and a DOI of `nnnnnnn.nnnnnnn`. Worth saying plainly, because writing to that standard and putting it in front of that committee is the part that was actually useful.
 
 Three frameworks held the work up.
 

@@ -8,7 +8,7 @@ source: UNSW
 flood: purple
 pdf: superposition.pdf
 featured: true
-pinned: 6
+pinned: 7
 authorship: jason
 authorshipNote: "Essay body is Jason's 2021 writing verbatim, recovered from JS string literals. Claude wrote the two-sentence intro, repaired concatenation artifacts, and placed the gallery."
 ---
