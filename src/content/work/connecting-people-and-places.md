@@ -7,10 +7,11 @@ month: 11
 type: project
 source: UNSW × ACM SIGGRAPH
 flood: blue
+pdf: SIGGRAPHAsia2023Poster.pdf
 featured: true
 pinned: 3
 authorship: ai-from-source
-authorshipNote: "Claude's prose, from the SIGGRAPH paper, the outcome presentation and Jason's professional reflection."
+authorshipNote: "Claude's prose, from the SIGGRAPH paper, the outcome presentation and Jason's professional reflection. Originally drafted from a pixel-recovered reading of the paper; re-checked against the source PDF on 2 Aug 2026 when it was found, and the reading held up."
 ---
 
 Sydney's urban centre, broken into ten zones around iconic locations. A preliminary survey of ten of them produced **57 possible points of interest**, sorted into four categories: computer graphics, Aboriginal history, iconic Australia, arts and culture.

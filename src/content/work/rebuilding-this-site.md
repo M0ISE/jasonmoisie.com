@@ -42,7 +42,11 @@ That was true and I hadn't clocked it. The resolution wasn't to split the differ
 
 **Recovering things I thought were gone.** The two best essays had their full text trapped inside JavaScript string literals — 4,600 words appended with `$("#BodyText").append("…")`, invisible to search, gone if JS failed. They came out, got their paragraph breaks back, and had the missing spaces the original concatenation had eaten repaired: `pathwayand`, `aboutnothing`.
 
-Then the same trick on something harder. My SIGGRAPH paper existed only as pixels — a screenshot of two pages sitting on slide 14 of a presentation. No source file anywhere. Cropping into the original at full resolution and upscaling made it legible enough to read back into text, reference list and all.
+Then the same trick on something harder. My SIGGRAPH paper looked like it existed only as pixels — a screenshot of two pages sitting on slide 14 of a presentation, no source file I could find. Cropping into the original at full resolution and upscaling made it legible enough to read back into text, reference list and all.
+
+The actual PDF turned up later the same day, in an iCloud folder I hadn't thought to check. That accident is the only real audit of the technique I'm ever likely to get, so I ran the comparison: **95% of roughly 1,500 words matched**, no misread words, no invented sentences, and all nine DOIs correct. Reading a paper off its own pixels works better than it has any right to.
+
+Two of the differences weren't whitespace, and they both went the same way — the transcription was *tidier* than the paper. A broken DOI prefix quietly repaired. A duplicated journal abbreviation quietly collapsed. Both corrections are almost certainly what my team meant to write in 2023. Both were still wrong to make without saying so, because a transcription that improves its source is no longer a transcription. They're marked `[sic]` now.
 
 ## Where it still needed a person
 
