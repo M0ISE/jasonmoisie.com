@@ -61,12 +61,17 @@ const range = span(all);
   h1 {
     font-size: var(--step-4);
     line-height: .9;
-    max-width: 16ch;
     letter-spacing: 0;
+    /* No measure cap. Display type at this size wants the whole column, and
+       .wrap is already the limit — so the headline ends flush with the card
+       grid below instead of stopping short of it. Two lines at desktop. */
   }
 
   .intro {
-    max-width: var(--measure);
+    /* Wider than --measure (66ch) on purpose: the hero should read as one
+       column that finishes where the grid does. Still capped, so the line
+       length can't run away if --wrap ever grows. */
+    max-width: 74ch;
     font-size: var(--step-1);
     margin-block-start: 1.6rem;
     text-wrap: pretty;
@@ -100,9 +105,14 @@ const range = span(all);
 
   /* Order matters: these are min-width queries with equal specificity, so
      the wider breakpoint has to come last or the narrower one wins. */
+  /* minmax(0, 1fr), not 1fr: a bare 1fr is minmax(auto, 1fr), and that auto
+     floor is the track's min-content width. One long title — "The role of
+     technology in the speculative future of HER" — was pushing its column to
+     444px while the other two sat at 362px and 375px. Flooring at 0 lets the
+     tracks divide evenly and the titles wrap instead. */
   @media (min-width: 700px) {
     .cards {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       /* every row the same height as the tallest, so the block reads as
          one grid rather than a set of independent tiles */
       grid-auto-rows: 1fr;
@@ -110,7 +120,7 @@ const range = span(all);
   }
 
   @media (min-width: 1000px) {
-    .cards { grid-template-columns: repeat(3, 1fr); }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 
   /* The li is the grid item and stretches to the row; the anchor has to
