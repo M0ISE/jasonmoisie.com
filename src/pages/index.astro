@@ -98,19 +98,19 @@ const range = span(all);
     gap: 1.5px;
   }
 
-  /* Two across, not four. At four the cards were ~260px, which is too
-     narrow for uppercase display type — long titles had nowhere to go. */
-  @media (min-width: 1000px) {
-    .cards { grid-template-columns: repeat(3, 1fr); }
-  }
-
+  /* Order matters: these are min-width queries with equal specificity, so
+     the wider breakpoint has to come last or the narrower one wins. */
   @media (min-width: 700px) {
     .cards {
       grid-template-columns: repeat(2, 1fr);
-      /* every row the same height as the tallest, so the whole block
-         reads as one grid rather than four independent tiles */
+      /* every row the same height as the tallest, so the block reads as
+         one grid rather than a set of independent tiles */
       grid-auto-rows: 1fr;
     }
+  }
+
+  @media (min-width: 1000px) {
+    .cards { grid-template-columns: repeat(3, 1fr); }
   }
 
   /* The li is the grid item and stretches to the row; the anchor has to
