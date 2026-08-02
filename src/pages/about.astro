@@ -1,12 +1,39 @@
 ---
 import Base from "../layouts/Base.astro";
 
+/** A piece of work under a role. `href` points at the archive when one exists. */
+type Project = {
+  year: string;
+  text: string;
+  href?: string;
+};
+
+type Role = {
+  years: string;
+  role: string;
+  note: string;
+  /** The role currently held. Draws the ● marker. */
+  current?: boolean;
+  /** Store or site, where it differs from the employer's own location. */
+  place?: string;
+  projects?: Project[];
+};
+
+type Employer = {
+  org: string;
+  place: string;
+  span: string;
+  /** Only set where the total time is worth stating on its own. */
+  tenure?: string;
+  roles: Role[];
+};
+
 /**
  * Grouped by employer, not by role. Three years at Lush was invisible when
  * every title sat as its own entry — the tenure is the point, the titles are
  * the detail underneath it.
  */
-const experience = [
+const experience: Employer[] = [
   {
     org: "Lush Fresh Handmade Cosmetics",
     place: "Australia & Aotearoa",
