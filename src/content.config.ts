@@ -1,5 +1,7 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+// Astro 6 deprecated re-exporting `z` from astro:content. Zod is v4 here.
+import { z } from "astro/zod";
 
 /**
  * One .md per piece. `flood` is the page's colour — the layout reads it
