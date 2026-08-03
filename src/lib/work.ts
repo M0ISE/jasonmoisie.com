@@ -37,10 +37,17 @@ export function dateline(p: Piece) {
   return `${start} – ${endYear}`;
 }
 
-/** Short form for dense lists: "Jun 2026". */
+/**
+ * Short form for dense lists: "Jun 2026", or "Aug 2022 – 2023" for a piece
+ * that spans years. The span matters here: the archive shelves by endYear,
+ * so without it a 2022-dated piece appears under the 2023 heading and reads
+ * as a mistake.
+ */
 export function datelineShort(p: Piece) {
-  const { year, month } = p.data;
-  return month ? `${MONTHS[month - 1].slice(0, 3)} ${year}` : `${year}`;
+  const { year, month, endYear } = p.data;
+  const start = month ? `${MONTHS[month - 1].slice(0, 3)} ${year}` : `${year}`;
+  if (!endYear || endYear === year) return start;
+  return `${start} – ${endYear}`;
 }
 
 /**
