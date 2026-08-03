@@ -66,6 +66,12 @@ const year = new Date().getFullYear();
     </main>
 
     <footer class="wrap">
+      <ul class="contact">
+        <li><a href="mailto:jason.moisie@gmail.com">Email</a></li>
+        <li><a href="tel:+61420288843">Phone</a></li>
+        <li><a href="https://www.linkedin.com/in/jasonmoisiadis/" rel="me noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/M0ISE" rel="me noopener">GitHub</a></li>
+      </ul>
       <p class="label">© Jason Moisiadis {year} · Sydney</p>
     </footer>
   </body>
@@ -79,4 +85,23 @@ const year = new Date().getFullYear();
     margin-block-start: clamp(3rem, 10vh, 7rem);
     border-top: 1px solid var(--rule);
   }
+
+  /* Contact lives here rather than on one page, so it's reachable from
+     anywhere in the archive without costing a nav item. */
+  .contact {
+    list-style: none;
+    margin: 0 0 1.4rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem 1.6rem;
+    font-family: var(--font-pixel);
+    font-size: var(--step-1);
+  }
+  .contact a {
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+  .contact a:hover,
+  .contact a:focus-visible { border-bottom-color: currentColor; }
 </style>

@@ -133,46 +133,22 @@ const education = [
   },
 ];
 
-const links = [
-  { label: "Email", href: "mailto:jason.moisie@gmail.com" },
-  { label: "Phone", href: "tel:+61420288843" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/jasonmoisiadis/" },
-  { label: "GitHub", href: "https://github.com/M0ISE" },
-  { label: "Instagram", href: "https://www.instagram.com/jasonmoisie/" },
-];
 ---
 
 <Base
-  title="The Human — Jason Moisiadis"
+  title="About — Jason Moisiadis"
   description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling — currently in Tech Services at Lush."
 >
   <section class="wrap">
     <div class="hero-top">
       <h1 class="pixel">me</h1>
-
-      <dl class="meta">
-        <div><dt>Who</dt><dd>Jason Moisiadis · they/he</dd></div>
-        <div><dt>Where</dt><dd>Sydney</dd></div>
-      </dl>
     </div>
 
-    <div class="bio">
-      <p>
-        I'm an experience designer grounded in UX and service design. I like
-        opening a problem up properly — enough user research to find what's
-        actually driving it — before spending time building the wrong solution.
-        My immersive work has focused on experiences that aren't obsessively
-        reliant on screens and headsets, using sensemaking principles to work
-        across all of someone's senses rather than just their eyes.
-      </p>
-      <p>
-        All of which is what I use day to day. In Tech Services at Lush I've
-        piloted point-of-sale and stock systems across the region, built
-        training that sticks, and automated the boring parts so people on the
-        floor can get on with the actual work — and every one of those is a
-        research problem before it's a technical one.
-      </p>
-    </div>
+    <p class="lede">
+      I like opening a problem up properly — enough user research to find
+      what's actually driving it — before spending time building the wrong
+      solution.
+    </p>
 
     <div class="cols">
       <div class="main">
@@ -242,18 +218,6 @@ const links = [
           </ul>
         </section>
 
-        <section class="block">
-          <h2 class="label">Let's chat ↓</h2>
-          <ul class="links">
-            {
-              links.map((l) => (
-                <li>
-                  <a href={l.href}>→ {l.label}</a>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
 
         <section class="block">
           <h2 class="label">Photography ↓</h2>
@@ -274,13 +238,10 @@ const links = [
 </Base>
 
 <style>
-  /* One word, and a small block of facts holding the other side of the line. */
+  /* One word, and a rule under it. The facts that used to sit on the other
+     side of this line now live in the site footer, where they're on every
+     page instead of just this one. */
   .hero-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 2rem;
-    flex-wrap: wrap;
     padding-block-end: 1rem;
     border-bottom: 1.5px solid var(--fg);
   }
@@ -291,27 +252,14 @@ const links = [
     letter-spacing: 0;
   }
 
-  .meta {
-    margin: 0;
-    display: grid;
-    gap: .35rem;
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: .08em;
-    text-align: right;
-  }
-  .meta div { display: flex; gap: .6rem; justify-content: flex-end; }
-  .meta dt { text-transform: uppercase; color: var(--fg-soft); }
-  .meta dd { margin: 0; }
-
-  .bio {
+  /* One sentence. The page is the experience list — this just sets the angle
+     before it starts. */
+  .lede {
     font-size: var(--step-1);
     max-width: var(--measure);
     margin-block-start: clamp(1.8rem, 4vh, 2.6rem);
-    display: grid;
-    gap: 1.1em;
+    text-wrap: pretty;
   }
-  .bio p { text-wrap: pretty; }
 
   .cols {
     display: grid;
