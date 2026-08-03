@@ -48,7 +48,7 @@ const sources = [
    * full-bleed article imagery; this is a backlit portrait against blown-out
    * glass and belongs lighter. Pushing it into the band crushes the face.
    */
-  { in: "dither-src/me-met.jpg", out: "me.png", lift: 1.1, width: 580 },
+  { in: "dither-src/me-met.jpg", out: "me.png", lift: 1.1, width: 580, dark: true },
 ];
 
 await mkdir(OUT, { recursive: true });
@@ -65,7 +65,14 @@ for (const src of sources) {
 
   const { width, height, channels } = info;
   const rgba = Buffer.alloc(width * height * 4);
+  // The mask is opaque where the photo is dark, and gets painted with
+  // currentColor — which flips to paper in dark mode, turning a portrait into
+  // a negative. `dark` emits the companion mask, opaque where the photo is
+  // light, so the page can swap it under prefers-color-scheme and keep the
+  // image positive both ways. Alpha is baked in; no filter can undo it.
+  const rgbaDark = src.dark ? Buffer.alloc(width * height * 4) : null;
   let ink = 0;
+  let inkDark = 0;
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -79,6 +86,14 @@ for (const src of sources) {
       rgba[o + 1] = 0;
       rgba[o + 2] = 0;
       rgba[o + 3] = on ? 255 : 0;
+
+      if (rgbaDark) {
+        // Dither the negative, rather than bitwise-flipping the mask above —
+        // that would invert the dot pattern too and lose the grain.
+        const onDark = 1 - lum < threshold;
+        if (onDark) inkDark++;
+        rgbaDark[o + 3] = onDark ? 255 : 0;
+      }
     }
   }
 
@@ -86,8 +101,20 @@ for (const src of sources) {
     .png({ compressionLevel: 9, palette: true })
     .toFile(`${OUT}/${src.out}`);
 
+  if (rgbaDark) {
+    const darkOut = src.out.replace(/\.png$/, "-dark.png");
+    await sharp(rgbaDark, { raw: { width, height, channels: 4 } })
+      .png({ compressionLevel: 9, palette: true })
+      .toFile(`${OUT}/${darkOut}`);
+  }
+
   // Coverage is the number to tune `lift` against — see the note above.
   const coverage = ((ink / (width * height)) * 100).toFixed(1);
   const flag = coverage >= 45 && coverage <= 60 ? "" : "  <- outside 45-60";
-  console.log(`  ${src.out.padEnd(18)} ${width}x${height}  ink ${coverage}%${flag}`);
+  const darkNote = rgbaDark
+    ? `  + dark ${((inkDark / (width * height)) * 100).toFixed(1)}%`
+    : "";
+  console.log(
+    `  ${src.out.padEnd(18)} ${width}x${height}  ink ${coverage}%${flag}${darkNote}`,
+  );
 }

@@ -200,6 +200,20 @@ const education = [
       </div>
 
       <aside class="side">
+        {/* Same 1-bit mask trick as the archive imagery — one file painted
+            with currentColor — but with a second mask for dark mode, or a
+            face comes out as a negative. See .portrait below. */}
+        <section class="block">
+          <h2 class="label">Me ↓</h2>
+          <div
+            class="dither portrait"
+            role="img"
+            aria-label="Jason looking up at the camera, grinning, in front of the glass wall of the Met's Sackler Wing with Fifth Avenue buildings behind it"
+            style="--img: url(/images/dither/me.png); --img-dark: url(/images/dither/me-dark.png);"
+          >
+          </div>
+        </section>
+
         <section class="block">
           <h2 class="label">Education ↓</h2>
           <ul class="edu">
@@ -212,16 +226,6 @@ const education = [
                 </li>
               ))
             }
-          </ul>
-        </section>
-
-        {/* The two that matter, in reach without scrolling to the footer.
-            LinkedIn, GitHub and the rest live down there. */}
-        <section class="block">
-          <h2 class="label">Contact ↓</h2>
-          <ul class="links">
-            <li><a href="mailto:jason.moisie@gmail.com">→ Email</a></li>
-            <li><a href="tel:+61420288843">→ Phone</a></li>
           </ul>
         </section>
 
@@ -239,18 +243,14 @@ const education = [
           </ul>
         </section>
 
-        {/* Same 1-bit mask trick as the archive imagery: one file, painted
-            with currentColor, so it reads as ink on paper and paper in dark
-            mode without shipping a second copy. */}
+        {/* The two that matter, in reach without scrolling to the footer.
+            LinkedIn, GitHub and the rest live down there. */}
         <section class="block">
-          <h2 class="label">Me ↓</h2>
-          <div
-            class="dither portrait"
-            role="img"
-            aria-label="Jason looking up at the camera, grinning, in front of the glass wall of the Met's Sackler Wing with Fifth Avenue buildings behind it"
-            style="--img: url(/images/dither/me.png);"
-          >
-          </div>
+          <h2 class="label">Contact ↓</h2>
+          <ul class="links">
+            <li><a href="mailto:jason.moisie@gmail.com">→ Email</a></li>
+            <li><a href="tel:+61420288843">→ Phone</a></li>
+          </ul>
         </section>
       </aside>
     </div>
@@ -439,6 +439,18 @@ const education = [
     background-color: currentColor;
     -webkit-mask: var(--img) center / contain no-repeat;
     mask: var(--img) center / contain no-repeat;
+  }
+
+  /* currentColor flips to paper in dark mode, which would render the mask as
+     a negative — fine for the abstract archive imagery, wrong on a face. The
+     companion mask is opaque where the photo is light, so it stays positive.
+     Overriding mask-image rather than --img: the variable is set inline on
+     the element, and an inline custom property beats a stylesheet rule. */
+  @media (prefers-color-scheme: dark) {
+    .portrait {
+      -webkit-mask-image: var(--img-dark);
+      mask-image: var(--img-dark);
+    }
   }
 
   .links { margin-block-start: .9rem; display: flex; flex-direction: column; gap: .45rem; }

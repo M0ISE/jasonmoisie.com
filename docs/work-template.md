@@ -127,6 +127,32 @@ against a window, say — will land nearer 30% and should be left there; forcing
 it into the band crushes the subject. Judge it by looking at it, not by the
 number. `crop` runs before the resize, so its values are in source pixels.
 
+### Dark mode inverts the image
+
+The mask is opaque where the photo is **dark**, and `currentColor` flips to
+paper in dark mode — so the same file renders as a photographic negative there.
+On the abstract archive imagery that reads as a two-tone treatment and is fine.
+On anything representational, especially a face, it is wrong.
+
+Set `dark: true` on the source and the script also writes `<name>-dark.png`,
+opaque where the photo is light. Then give the element both URLs and swap the
+mask, not the variable — `--img` is set inline, and an inline custom property
+beats a stylesheet rule:
+
+```html
+<div class="dither" role="img" aria-label="..."
+     style="--img: url(/images/dither/x.png); --img-dark: url(/images/dither/x-dark.png);"></div>
+```
+
+```css
+@media (prefers-color-scheme: dark) {
+  .dither { -webkit-mask-image: var(--img-dark); mask-image: var(--img-dark); }
+}
+```
+
+Only `me.png` does this today. The archive images are still single-mask, which
+is a deliberate choice rather than an oversight — revisit it per image.
+
 **Diagrams, charts and documents** stay as normal images — dithering destroys
 their legibility:
 
