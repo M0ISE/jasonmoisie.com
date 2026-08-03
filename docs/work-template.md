@@ -104,8 +104,10 @@ adding a piece forces the question.
 
 ## Images
 
-**Photographs** get the dither treatment. Add the source to `scripts/dither.mjs`,
-run `node scripts/dither.mjs`, then:
+**Photographs** get the dither treatment. Put the original in `dither-src/`
+— not in `public/`, which is served, and originals have no business shipping.
+Add it to the `sources` list in `scripts/dither.mjs`, run
+`node scripts/dither.mjs`, then:
 
 ```html
 <figure>
@@ -119,6 +121,11 @@ The dither is a 1-bit mask painted with the page's own colour, so one file
 works on paper, on a flood ground and in dark mode. Aim for **45–60% ink
 coverage** — the script prints it. A night scene needs a `lift` above 1 or it
 thresholds to a solid slab.
+
+That band is for full-bleed imagery. A photo that is mostly bright — a portrait
+against a window, say — will land nearer 30% and should be left there; forcing
+it into the band crushes the subject. Judge it by looking at it, not by the
+number. `crop` runs before the resize, so its values are in source pixels.
 
 **Diagrams, charts and documents** stay as normal images — dithering destroys
 their legibility:

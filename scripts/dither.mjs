@@ -34,15 +34,29 @@ const BAYER = [
  * where the texture actually reads.
  */
 const sources = [
-  { in: "public/images/heavens.png", out: "heavens.png", lift: 1.55 },
-  { in: "public/images/her.png", out: "her.png", lift: 1 },
-  { in: "public/images/majorProject.jpeg", out: "major-project.png", lift: 1 },
+  { in: "dither-src/heavens.png", out: "heavens.png", lift: 1.55 },
+  { in: "dither-src/her.png", out: "her.png", lift: 1 },
+  { in: "dither-src/majorProject.jpeg", out: "major-project.png", lift: 1 },
+  /**
+   * Sidebar portrait, full frame — the window wall is most of what makes the
+   * shot, so cropping to the face threw the picture away. Rendered at 580px
+   * for a ~290px column: 2x, so it lands 1:1 on a retina screen and halves
+   * cleanly elsewhere. Scaling a 1-bit mask by a non-integer ratio turns the
+   * grain to mud.
+   *
+   * Lands at ~33% ink, under the 45-60 band above. That band is for
+   * full-bleed article imagery; this is a backlit portrait against blown-out
+   * glass and belongs lighter. Pushing it into the band crushes the face.
+   */
+  { in: "dither-src/me-met.jpg", out: "me.png", lift: 1.1, width: 580 },
 ];
 
 await mkdir(OUT, { recursive: true });
 
 for (const src of sources) {
-  let img = sharp(src.in).resize({ width: WIDTH }).greyscale().normalise();
+  let img = sharp(src.in);
+  if (src.crop) img = img.extract(src.crop);
+  img = img.resize({ width: src.width ?? WIDTH }).greyscale().normalise();
   if (src.lift !== 1) img = img.modulate({ brightness: src.lift });
 
   const { data, info } = await img
@@ -51,6 +65,7 @@ for (const src of sources) {
 
   const { width, height, channels } = info;
   const rgba = Buffer.alloc(width * height * 4);
+  let ink = 0;
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -58,6 +73,7 @@ for (const src of sources) {
       // +0.5 centres the threshold so mid-grey dithers ~50/50
       const threshold = (BAYER[y % N][x % N] + 0.5) / (N * N);
       const on = lum < threshold; // dark pixel -> ink
+      if (on) ink++;
       const o = (y * width + x) * 4;
       rgba[o] = 0;
       rgba[o + 1] = 0;
@@ -70,5 +86,8 @@ for (const src of sources) {
     .png({ compressionLevel: 9, palette: true })
     .toFile(`${OUT}/${src.out}`);
 
-  console.log(`  ${src.out}  ${width}x${height}`);
+  // Coverage is the number to tune `lift` against — see the note above.
+  const coverage = ((ink / (width * height)) * 100).toFixed(1);
+  const flag = coverage >= 45 && coverage <= 60 ? "" : "  <- outside 45-60";
+  console.log(`  ${src.out.padEnd(18)} ${width}x${height}  ink ${coverage}%${flag}`);
 }

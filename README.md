@@ -57,6 +57,8 @@ src/
     global.css       fonts, reset, shared utilities
 public/
   fonts/  pdf/  images/  brand/  CNAME
+dither-src/          originals for the ditherer — deliberately outside public/,
+                     so multi-MB photos never ship
 scripts/
   dither.mjs         one-off image dithering — run manually, output committed
 docs/

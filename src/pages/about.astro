@@ -238,6 +238,20 @@ const education = [
             </li>
           </ul>
         </section>
+
+        {/* Same 1-bit mask trick as the archive imagery: one file, painted
+            with currentColor, so it reads as ink on paper and paper in dark
+            mode without shipping a second copy. */}
+        <section class="block">
+          <h2 class="label">Me ↓</h2>
+          <div
+            class="dither portrait"
+            role="img"
+            aria-label="Jason looking up at the camera, grinning, in front of the glass wall of the Met's Sackler Wing with Fifth Avenue buildings behind it"
+            style="--img: url(/images/dither/me.png);"
+          >
+          </div>
+        </section>
       </aside>
     </div>
   </section>
@@ -412,6 +426,19 @@ const education = [
     font-size: var(--step--1);
     color: var(--fg-soft);
     text-wrap: pretty;
+  }
+
+  /* The mask is square and generated at 580px for a ~290px column, so it
+     lands 1:1 on a retina screen. Capped so it can't outgrow that on a wide
+     viewport, where a non-integer downscale would muddy the grain. */
+  .portrait {
+    width: 100%;
+    max-width: 290px;
+    aspect-ratio: 3 / 4;
+    margin-block-start: .9rem;
+    background-color: currentColor;
+    -webkit-mask: var(--img) center / contain no-repeat;
+    mask: var(--img) center / contain no-repeat;
   }
 
   .links { margin-block-start: .9rem; display: flex; flex-direction: column; gap: .45rem; }
