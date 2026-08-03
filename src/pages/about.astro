@@ -140,15 +140,12 @@ const education = [
   description="Experience designer in Sydney. UX and service design, narrative design, simulation and modelling — currently in Tech Services at Lush."
 >
   <section class="wrap">
-    <div class="hero-top">
-      <h1 class="pixel">me</h1>
-    </div>
-
-    <p class="lede">
-      I like opening a problem up properly — enough user research to find
-      what's actually driving it — before spending time building the wrong
-      solution.
-    </p>
+    {/* Same header pattern as the archive: title left, facts right, rule
+        under. The page is the record, so it starts at the record. */}
+    <header class="head">
+      <h1>About</h1>
+      <p class="label">Jason Moisiadis · they/he · Sydney</p>
+    </header>
 
     <div class="cols">
       <div class="main">
@@ -238,27 +235,22 @@ const education = [
 </Base>
 
 <style>
-  /* One word, and a rule under it. The facts that used to sit on the other
-     side of this line now live in the site footer, where they're on every
-     page instead of just this one. */
-  .hero-top {
+  /* Mirrors .head on the archive page — same rule, same baseline alignment,
+     so the two top-level pages open identically. */
+  .head {
     padding-block-end: 1rem;
     border-bottom: 1.5px solid var(--fg);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   h1 {
-    font-size: clamp(4rem, 16vw, 11rem);
-    line-height: .8;
-    letter-spacing: 0;
-  }
-
-  /* One sentence. The page is the experience list — this just sets the angle
-     before it starts. */
-  .lede {
-    font-size: var(--step-1);
-    max-width: var(--measure);
-    margin-block-start: clamp(1.8rem, 4vh, 2.6rem);
-    text-wrap: pretty;
+    font-size: var(--step-3);
+    text-transform: uppercase;
+    letter-spacing: -.03em;
   }
 
   .cols {

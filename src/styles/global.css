@@ -131,6 +131,19 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   border: 0;
 }
 
+/* Present to assistive tech and the document outline, absent on screen. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip {
   position: absolute;
   left: -9999px;
