@@ -1,0 +1,115 @@
+# Work history, grouped by employer rather than by role — three years at Lush
+# was invisible when every title sat as its own entry.
+#
+# Read by /about and /resume. Validated by the `experience` collection in
+# src/content.config.ts, so a typo here fails the build.
+#
+# `resume: true` on a project marks it for the printed CV, which has to fit a
+# page. Everything else still shows on /about.
+
+- id: lush
+  org: Lush Fresh Handmade Cosmetics
+  place: Australia & Aotearoa
+  span: Oct 2023 — present
+  tenure: 3 years
+  roles:
+    - years: "2025 — present"
+      current: true
+      role: Operational Specialist, Tech Services
+      note: >-
+        Supporting stores and factories across Australia and Aotearoa on the
+        systems they run on — training, troubleshooting, and refining the tools
+        that keep a shop floor working when something breaks.
+      projects:
+        - year: "2025 – 2026"
+          resume: true
+          text: >-
+            Lush Pay phase 2 — point-of-sale hardware rollout. Procurement and
+            logistics for dozens of Epson TM-L100 label printers and CAS PND
+            till scales, working out what deployment actually looks like in
+            store and tailoring the install with each store's leadership team.
+            Budgeting, vendor negotiation, and hands-on provisioning down to
+            custom IP setups. I was on the shop floor for phase 1, so I took
+            what went wrong there into how phase 2 was run.
+          resumeText: >-
+            Lush Pay phase 2 — point-of-sale hardware rollout across the region.
+            Procurement, vendor negotiation and budgeting for dozens of label
+            printers and till scales, then hands-on provisioning and per-store
+            install planning.
+        - year: "2026"
+          resume: true
+          href: /work/bot-ai-chat-helper
+          text: >-
+            B.O.T — a support bot so stores can solve in-a-pinch tech issues
+            when Tech Services isn't available. I saw a need on my team while I
+            was on leave and built a tool to help cover it.
+          resumeText: >-
+            B.O.T — built an internal support bot so stores can resolve Level 1
+            tech issues outside Tech Services hours.
+        - year: "2026"
+          resume: true
+          text: >-
+            Long-lead click and collect — localising the global system.
+            Coordinating process and training across Digital Fulfilment, store
+            teams and the UK dev team so it arrived working rather than just
+            arriving.
+          resumeText: >-
+            Long-lead click and collect — localised the global system,
+            coordinating process and training across Digital Fulfilment, store
+            teams and the UK dev team.
+        - year: "2026"
+          resume: true
+          text: >-
+            Mobile device management and fleet provisioning. Built configuration
+            profiles in ScaleFusion for mass enrolment of Zebra TC27 scanners,
+            till tablets, back-of-house tablets and store phones.
+          resumeText: >-
+            Mobile device management — built ScaleFusion configuration profiles
+            for mass enrolment of scanners, tablets and store phones.
+        - year: "2025"
+          text: >-
+            Took my experience piloting the new POS system straight into
+            training stores how to use it.
+    - years: "2025"
+      role: Assistant Manager
+      place: Parramatta
+      note: >-
+        Piloted a new point-of-service and stock management system for our
+        region and the country, then ran troubleshooting and onboarding for the
+        rest of the region. Led the team through a visual merchandising
+        realignment, and moved ordering closer to what the store actually needed
+        to cut waste.
+    - years: "2024 – 2025"
+      role: Supervisor
+      place: QVB
+      note: >-
+        Onboarding and up-skilling the team, designing incentives against our
+        targets, and building Power BI reports on customer trends — then using
+        them to steer ordering, stock allocation, and to measure whether a
+        merchandising change actually moved anything. Also ran the
+        product-making workshops and parties.
+    - years: "2023 – 2024"
+      role: Sales Assistant
+      place: QVB
+      note: Consults, stock, payments and POS, opening and closing.
+
+- id: organic-bread-bar
+  org: The Organic Bread Bar
+  place: Paddington
+  span: Nov 2022 — Jun 2023
+  roles:
+    - years: "2022 – 2023"
+      role: Evening Barista
+      note: >-
+        Coffee, bread and pastry service, close-down and cash-up, wholesale
+        production sheets, and training new starters on the particulars of an
+        evening shift.
+
+- id: bluebottle
+  org: Bluebottle Espresso
+  place: Manly
+  span: Jun — Nov 2022
+  roles:
+    - years: "2022"
+      role: Barista & All-Rounder
+      note: Front of house through weekend rushes — coffee, kitchen prep, POS.

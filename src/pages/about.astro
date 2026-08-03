@@ -1,137 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
+import { contactLinks, profile } from "../data/profile";
 
-/** A piece of work under a role. `href` points at the archive when one exists. */
-type Project = {
-  year: string;
-  text: string;
-  href?: string;
-};
+// YAML order is the intended order — newest employer first, roles newest
+// first within it. getCollection doesn't promise order, so pin it to the file.
+const order = ["lush", "organic-bread-bar", "bluebottle"];
+const experience = (await getCollection("experience"))
+  .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
+  .map((e) => e.data);
 
-type Role = {
-  years: string;
-  role: string;
-  note: string;
-  /** The role currently held. Draws the ● marker. */
-  current?: boolean;
-  /** Store or site, where it differs from the employer's own location. */
-  place?: string;
-  projects?: Project[];
-};
-
-type Employer = {
-  org: string;
-  place: string;
-  span: string;
-  /** Only set where the total time is worth stating on its own. */
-  tenure?: string;
-  roles: Role[];
-};
-
-/**
- * Grouped by employer, not by role. Three years at Lush was invisible when
- * every title sat as its own entry — the tenure is the point, the titles are
- * the detail underneath it.
- */
-const experience: Employer[] = [
-  {
-    org: "Lush Fresh Handmade Cosmetics",
-    place: "Australia & Aotearoa",
-    span: "Oct 2023 — present",
-    tenure: "3 years",
-    roles: [
-      {
-        years: "2025 — present",
-        current: true,
-        role: "Operational Specialist, Tech Services",
-        note: "Supporting stores and factories across Australia and Aotearoa on the systems they run on — training, troubleshooting, and refining the tools that keep a shop floor working when something breaks.",
-        projects: [
-          {
-            year: "2025 – 2026",
-            text: "Lush Pay phase 2 — point-of-sale hardware rollout. Procurement and logistics for dozens of Epson TM-L100 label printers and CAS PND till scales, working out what deployment actually looks like in store and tailoring the install with each store's leadership team. Budgeting, vendor negotiation, and hands-on provisioning down to custom IP setups. I was on the shop floor for phase 1, so I took what went wrong there into how phase 2 was run.",
-          },
-          {
-            year: "2026",
-            text: "B.O.T — a support bot so stores can solve in-a-pinch tech issues when Tech Services isn't available. I saw a need on my team while I was on leave and built a tool to help cover it.",
-            href: "/work/bot-ai-chat-helper",
-          },
-          {
-            year: "2026",
-            text: "Long-lead click and collect — localising the global system. Coordinating process and training across Digital Fulfilment, store teams and the UK dev team so it arrived working rather than just arriving.",
-          },
-          {
-            year: "2026",
-            text: "Mobile device management and fleet provisioning. Built configuration profiles in ScaleFusion for mass enrolment of Zebra TC27 scanners, till tablets, back-of-house tablets and store phones.",
-          },
-          {
-            year: "2025",
-            text: "Took my experience piloting the new POS system straight into training stores how to use it.",
-          },
-        ],
-      },
-      {
-        years: "2025",
-        role: "Assistant Manager",
-        place: "Parramatta",
-        note: "Piloted a new point-of-service and stock management system for our region and the country, then ran troubleshooting and onboarding for the rest of the region. Led the team through a visual merchandising realignment, and moved ordering closer to what the store actually needed to cut waste.",
-      },
-      {
-        years: "2024 – 2025",
-        role: "Supervisor",
-        place: "QVB",
-        note: "Onboarding and up-skilling the team, designing incentives against our targets, and building Power BI reports on customer trends — then using them to steer ordering, stock allocation, and to measure whether a merchandising change actually moved anything. Also ran the product-making workshops and parties.",
-      },
-      {
-        years: "2023 – 2024",
-        role: "Sales Assistant",
-        place: "QVB",
-        note: "Consults, stock, payments and POS, opening and closing.",
-      },
-    ],
-  },
-  {
-    org: "The Organic Bread Bar",
-    place: "Paddington",
-    span: "Nov 2022 — Jun 2023",
-    roles: [
-      {
-        years: "2022 – 2023",
-        role: "Evening Barista",
-        note: "Coffee, bread and pastry service, close-down and cash-up, wholesale production sheets, and training new starters on the particulars of an evening shift.",
-      },
-    ],
-  },
-  {
-    org: "Bluebottle Espresso",
-    place: "Manly",
-    span: "Jun — Nov 2022",
-    roles: [
-      {
-        years: "2022",
-        role: "Barista & All-Rounder",
-        note: "Front of house through weekend rushes — coffee, kitchen prep, POS.",
-      },
-    ],
-  },
-];
-
-const education = [
-  {
-    years: "2021 – 2023",
-    award: "Master of Visualisation, Simulation & Immersive Design",
-    place: "University of New South Wales",
-  },
-  {
-    years: "2017 – 2020",
-    award: "Bachelor of Design Computing",
-    place: "University of Sydney",
-  },
-  {
-    years: "2016",
-    award: "Bachelor of Electrical Engineering & Nanotechnology",
-    place: "University of Technology Sydney",
-  },
-];
+const eduOrder = ["unsw-masters", "usyd-design-computing", "uts-engineering"];
+const education = (await getCollection("education"))
+  .sort((a, b) => eduOrder.indexOf(a.id) - eduOrder.indexOf(b.id))
+  .map((e) => e.data);
 
 ---
 
@@ -144,7 +26,9 @@ const education = [
         under. The page is the record, so it starts at the record. */}
     <header class="head">
       <h1>About</h1>
-      <p class="label">Jason Moisiadis · they/he · Sydney</p>
+      <p class="label">
+        {profile.name} · {profile.pronouns} · {profile.location.split(",")[0]}
+      </p>
     </header>
 
     <div class="cols">
@@ -248,8 +132,14 @@ const education = [
         <section class="block">
           <h2 class="label">Contact ↓</h2>
           <ul class="links">
-            <li><a href="mailto:jason.moisie@gmail.com">→ Email</a></li>
-            <li><a href="tel:+61420288843">→ Phone</a></li>
+            {
+              contactLinks
+                .filter((l) => l.label === "Email" || l.label === "Phone")
+                .map((l) => (
+                  <li><a href={l.href}>→ {l.label}</a></li>
+                ))
+            }
+            <li><a href="/resume">→ Résumé ▤</a></li>
           </ul>
         </section>
       </aside>

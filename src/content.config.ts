@@ -1,5 +1,5 @@
 import { defineCollection } from "astro:content";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 // Astro 6 deprecated re-exporting `z` from astro:content. Zod is v4 here.
 import { z } from "astro/zod";
 
@@ -51,4 +51,52 @@ const work = defineCollection({
   }),
 });
 
-export const collections = { work };
+/**
+ * CV data. It lived inline in about.astro, which meant it could only ever
+ * render on that one page — the résumé needs the same records, so it moved
+ * out to YAML and gets validated here like everything else.
+ */
+const project = z.object({
+  year: z.string(),
+  text: z.string(),
+  /** Set when the piece has a page in the archive. */
+  href: z.string().optional(),
+  /** Include on the printed CV, which has a page to fit into. */
+  resume: z.boolean().default(false),
+  /** Tighter wording for the CV. Falls back to `text`. */
+  resumeText: z.string().optional(),
+});
+
+const role = z.object({
+  years: z.string(),
+  role: z.string(),
+  note: z.string(),
+  /** The role currently held. Draws the ● marker. */
+  current: z.boolean().default(false),
+  /** Store or site, where it differs from the employer's own location. */
+  place: z.string().optional(),
+  projects: z.array(project).optional(),
+});
+
+const experience = defineCollection({
+  loader: file("src/data/experience.yaml"),
+  schema: z.object({
+    org: z.string(),
+    place: z.string(),
+    span: z.string(),
+    /** Only set where the total time is worth stating on its own. */
+    tenure: z.string().optional(),
+    roles: z.array(role),
+  }),
+});
+
+const education = defineCollection({
+  loader: file("src/data/education.yaml"),
+  schema: z.object({
+    years: z.string(),
+    award: z.string(),
+    place: z.string(),
+  }),
+});
+
+export const collections = { work, experience, education };

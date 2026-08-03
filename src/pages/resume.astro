@@ -1,0 +1,308 @@
+---
+/**
+ * The CV, built from the same records the About page renders.
+ *
+ * Three readers, one source:
+ *   - a person on the site, in the design system
+ *   - a printer, via @media print — one page, no floods, no grain
+ *   - a machine, via the JSON-LD below and /resume.json
+ *
+ * Nothing here is authored. Editing src/data/*.yaml updates the site and the
+ * CV together, which is the point — the CV going stale is what happens when
+ * it lives in a separate document.
+ */
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+import { datelineShort } from "../lib/work";
+
+const order = ["lush", "organic-bread-bar", "bluebottle"];
+const experience = (await getCollection("experience"))
+  .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
+  .map((e) => e.data);
+
+const eduOrder = ["unsw-masters", "usyd-design-computing", "uts-engineering"];
+const education = (await getCollection("education"))
+  .sort((a, b) => eduOrder.indexOf(a.id) - eduOrder.indexOf(b.id))
+  .map((e) => e.data);
+
+/** Selected work comes from the archive's own pins, so it can't drift. */
+const selected = (await getCollection("work"))
+  .filter((p) => !p.data.draft && p.data.pinned !== undefined)
+  .sort((a, b) => (a.data.pinned ?? 99) - (b.data.pinned ?? 99))
+  .slice(0, 5);
+
+/** Print gets the tightened wording; the screen gets the full note. */
+const forPrint = (p: { resume: boolean; text: string; resumeText?: string }) =>
+  p.resumeText ?? p.text;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.title,
+  description: profile.summary,
+  email: `mailto:${profile.email}`,
+  telephone: profile.phone,
+  url: profile.siteUrl,
+  address: { "@type": "PostalAddress", addressLocality: "Sydney", addressCountry: "AU" },
+  sameAs: [profile.linkedin, profile.github],
+  alumniOf: education.map((e) => ({
+    "@type": "EducationalOrganization",
+    name: e.place,
+    description: `${e.award}, ${e.years}`,
+  })),
+  hasOccupation: experience.flatMap((org) =>
+    org.roles.map((r) => ({
+      "@type": "Occupation",
+      name: r.role,
+      occupationLocation: { "@type": "Place", name: `${org.org}, ${r.place ?? org.place}` },
+      description: r.note,
+    })),
+  ),
+};
+---
+
+<Base
+  title={`Résumé — ${profile.name}`}
+  description={`Résumé for ${profile.name}, ${profile.title} in Sydney. Built from the site's own records.`}
+>
+  <section class="wrap resume">
+    <header class="head">
+      <h1>Résumé</h1>
+      {/* No print button: that needs window.print(), and this site ships no
+          client-side JavaScript. The keyboard shortcut costs the reader
+          nothing and costs the page nothing. */}
+      <p class="label no-print">⌘P / Ctrl+P to save as PDF</p>
+    </header>
+
+    {/* Print-only identity block. On screen the nav and footer already say
+        who this is; on paper there is nothing else. */}
+    <header class="ident">
+      <p class="ident-name">{profile.name}</p>
+      <p class="ident-meta">
+        {profile.title} · {profile.location} ·
+        <a href={`mailto:${profile.email}`}>{profile.email}</a> ·
+        <a href={profile.phoneHref}>{profile.phone}</a> ·
+        <a href={profile.siteUrl}>{profile.site}</a>
+      </p>
+    </header>
+
+    <p class="summary">{profile.summary}</p>
+
+    <section class="sec">
+      <h2 class="label">Experience</h2>
+      {
+        experience.map((org) => (
+          <article class="org">
+            <div class="org-head">
+              <h3 class="org-name">{org.org}</h3>
+              <p class="org-span">{org.span}</p>
+            </div>
+            {org.roles.map((r) => (
+              <div class="role">
+                <div class="role-head">
+                  <h4 class="role-name">
+                    {r.role}
+                    {r.place && <span class="soft"> — {r.place}</span>}
+                  </h4>
+                  <p class="role-years">{r.years}</p>
+                </div>
+                <p class="role-note">{r.note}</p>
+                {r.projects && r.projects.some((p) => p.resume) && (
+                  <ul class="hits">
+                    {r.projects
+                      .filter((p) => p.resume)
+                      .map((p) => (
+                        <li>
+                          <span class="hit-year">{p.year}</span>
+                          {forPrint(p)}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </article>
+        ))
+      }
+    </section>
+
+    <div class="tail">
+      <section class="sec">
+        <h2 class="label">Education</h2>
+        {
+          education.map((e) => (
+            <div class="edu">
+              <p class="edu-award">{e.award}</p>
+              <p class="edu-meta">{e.place} · {e.years}</p>
+            </div>
+          ))
+        }
+      </section>
+
+      <section class="sec">
+        <h2 class="label">Selected work</h2>
+        <ul class="sel">
+          {
+            selected.map((p) => (
+              <li>
+                <a href={`/work/${p.id}`}>{p.data.title}</a>
+                <span class="soft"> — {p.data.source}, {datelineShort(p)}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="sel-note">
+          Full archive at <a href={profile.siteUrl + "/work"}>{profile.site}/work</a>
+          <span class="no-print">
+            · machine-readable copy at <a href="/resume.json">/resume.json</a>
+          </span>
+        </p>
+      </section>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</Base>
+
+<style>
+  /* --- screen --- */
+  .head {
+    padding-block-end: 1rem;
+    border-bottom: 1.5px solid var(--fg);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h1 {
+    font-size: var(--step-3);
+    text-transform: uppercase;
+    letter-spacing: -.03em;
+  }
+
+  .ident { margin-block-start: clamp(2rem, 5vh, 3rem); }
+  .ident-name {
+    font-size: var(--step-2);
+    font-weight: 700;
+    letter-spacing: -.02em;
+  }
+  .ident-meta {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+    margin-block-start: .3rem;
+    text-wrap: pretty;
+  }
+
+  .summary {
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    margin-block-start: 1.4rem;
+    text-wrap: pretty;
+  }
+
+  .sec { margin-block-start: 2.6rem; }
+  .sec > h2 { padding-block-end: .5rem; border-bottom: 1px solid var(--rule); }
+
+  .org { margin-block-start: 1.6rem; }
+  .org-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-bottom: 1.5px solid var(--fg);
+    padding-block-end: .35rem;
+  }
+  .org-name { font-size: var(--step-1); font-weight: 700; letter-spacing: -.01em; }
+  .org-span,
+  .role-years {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: .1em;
+    color: var(--fg-soft);
+    white-space: nowrap;
+  }
+
+  .role { padding-block: .9rem; }
+  .role + .role { border-top: 1px solid var(--rule); }
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .role-name { font-size: var(--step-0); font-weight: 700; }
+  .soft { font-weight: 400; color: var(--fg-soft); }
+  .role-note {
+    color: var(--fg-soft);
+    max-width: 68ch;
+    margin-block-start: .25rem;
+    text-wrap: pretty;
+  }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+  .hits { margin-block-start: .5rem; display: grid; gap: .3rem; }
+  .hits li {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: .8rem;
+    font-size: var(--step--1);
+    max-width: 78ch;
+  }
+  .hit-year {
+    font-family: var(--font-mono);
+    letter-spacing: .08em;
+    color: var(--fg-soft);
+  }
+
+  .tail { display: grid; gap: 0; }
+  @media (min-width: 820px) {
+    .tail { grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); }
+    .tail .sec { margin-block-start: 2.6rem; }
+  }
+
+  .edu { margin-block-start: .9rem; }
+  .edu-award { font-weight: 700; }
+  .edu-meta { font-size: var(--step--1); color: var(--fg-soft); }
+
+  .sel { margin-block-start: .9rem; display: grid; gap: .35rem; }
+  .sel-note { font-size: var(--step--1); color: var(--fg-soft); margin-block-start: .8rem; }
+
+  /* --- print ---
+     One page. The flood system, the grain and the nav are all navigation
+     aids, and paper has no navigation. What is left is the type scale and
+     the rules, which is the part of the design system that survives. */
+  @media print {
+    .no-print { display: none; }
+
+    .head { display: none; }
+    .ident { margin: 0; }
+
+    /* Tuned against a measured A4 sheet (1123px less 12mm margins = 1033px
+       usable). At the screen values this came out 3px over and spilled to a
+       second page for nothing. */
+    .ident-name { font-size: 15pt; }
+    .ident-meta { font-size: 8pt; margin-block-start: .15rem; }
+    .summary { font-size: 9pt; max-width: none; margin-block-start: .45rem; }
+    .sec { margin-block-start: .65rem; }
+    .sec > h2 { padding-block-end: .3rem; }
+    .org { margin-block-start: .45rem; }
+    .role { padding-block: .25rem; }
+    .role-note { max-width: none; margin-block-start: .15rem; }
+    .hits { margin-block-start: .3rem; gap: .2rem; }
+    .hits li { grid-template-columns: 5.5rem 1fr; max-width: none; }
+    .edu { margin-block-start: .35rem; }
+    .sel { gap: .25rem; }
+    .sel-note { margin-block-start: .5rem; }
+
+    /* Keep a role and its bullets together across a page break. */
+    .org, .role, .edu { break-inside: avoid; }
+
+    .tail { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  }
+</style>

@@ -131,6 +131,48 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   border: 0;
 }
 
+/* --- print ---
+   Paper has no navigation, no dark mode and no grain. Force ink on white so a
+   reader printing from a dark-mode browser doesn't get a black slab, drop the
+   chrome, and let links carry their own weight without decoration. Page-level
+   rules live here so any page prints sanely, not just /resume. */
+@media print {
+  :root {
+    --ground: #fff;
+    --ground-2: #fff;
+    --fg: #000;
+    --fg-soft: #333;
+    --rule: #999;
+    --paper: #fff;
+    --ink: #000;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  /* The riso grain is a fixed-position overlay — it would tile over every
+     printed page. */
+  body::after { display: none !important; }
+
+  /* Direct children of body only — the site chrome. A bare `header` selector
+     also hides any <header> inside the page, which on /resume is the block
+     carrying the name and contact details. */
+  body > header,
+  body > footer,
+  .skip { display: none !important; }
+
+  main { padding: 0 !important; }
+  .wrap { max-width: none; padding-inline: 0; }
+
+  a { text-decoration: none; color: inherit; }
+
+  h1, h2, h3, h4 { break-after: avoid; }
+  p, li { orphans: 2; widows: 2; }
+}
+
 /* Present to assistive tech and the document outline, absent on screen. */
 .sr-only {
   position: absolute;

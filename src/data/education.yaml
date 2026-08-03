@@ -1,0 +1,17 @@
+# Read by /about and /resume. Validated by the `education` collection in
+# src/content.config.ts.
+
+- id: unsw-masters
+  years: "2021 – 2023"
+  award: Master of Visualisation, Simulation & Immersive Design
+  place: University of New South Wales
+
+- id: usyd-design-computing
+  years: "2017 – 2020"
+  award: Bachelor of Design Computing
+  place: University of Sydney
+
+- id: uts-engineering
+  years: "2016"
+  award: Bachelor of Electrical Engineering & Nanotechnology
+  place: University of Technology Sydney
