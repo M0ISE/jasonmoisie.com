@@ -429,7 +429,34 @@ const links = [
   }
 
   /* --- sidebar --- */
-  .side { display: flex; flex-direction: column; }
+  .side {
+    display: flex;
+    flex-direction: column;
+    /* Breathing room above the sidebar when it is stuck, and the same again
+       below it when it has to scroll itself. */
+    --side-gap: clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  /* Sticky only where there are two columns to be beside. The sidebar runs
+     out well before the experience list does, so it follows instead of
+     leaving a long empty gutter. */
+  @media (min-width: 900px) {
+    .side {
+      position: sticky;
+      /* Without this the grid stretches .side to the full row height and
+         sticky has no slack to travel in. */
+      align-self: start;
+      top: var(--side-gap);
+      /* The sidebar is ~816px. On a short window that is taller than the
+         viewport, and a plain top-pin would strand the last block
+         off-screen for the whole scroll. Cap it and let it scroll itself
+         instead — the scrollbar only appears when it is actually needed. */
+      max-height: calc(100dvh - var(--side-gap) * 2);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+  }
 
   .side-note {
     margin-block-start: .8rem;
