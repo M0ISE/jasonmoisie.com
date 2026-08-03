@@ -124,8 +124,11 @@ const range = span(all);
   }
 
   /* The li is the grid item and stretches to the row; the anchor has to
-     be told to fill it, or the container background shows through. */
-  .cards li { display: grid; }
+     be told to fill it, or the container background shows through.
+     min-width: 0 on both — grid items default to min-width: auto, which
+     refuses to shrink below min-content. Without it the card stays as wide
+     as its longest word and spills over the neighbouring tile. */
+  .cards li { display: grid; min-width: 0; }
 
   .card {
     display: flex;
@@ -133,6 +136,10 @@ const range = span(all);
     gap: .6rem;
     height: 100%;
     min-height: clamp(200px, 26vw, 300px);
+    min-width: 0;
+    /* Makes the card a query container so the title can size against the
+       tile rather than the viewport — see .c-title. */
+    container-type: inline-size;
     padding: 1.5rem 1.4rem;
     text-decoration: none;
     background: var(--ground);
@@ -151,7 +158,12 @@ const range = span(all);
   }
 
   .c-title {
-    font-size: var(--step-3);
+    /* Sized against the tile (cqi), not the viewport, so the type shrinks to
+       fit the box instead of the box stretching to fit the type. --step-3 is
+       the ceiling, so short titles still get the full display size. 12cqi
+       keeps the longest word here — SUPERPOSITION — whole at every
+       breakpoint; overflow-wrap below is the backstop if a longer one lands. */
+    font-size: clamp(1.75rem, 12cqi, var(--step-3));
     font-weight: 700;
     line-height: .95;
     letter-spacing: -.03em;
